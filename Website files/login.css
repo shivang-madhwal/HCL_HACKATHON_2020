@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    color: #F2F2F2;
+}
+
+#box-login {
+    background-color: rgb(19, 18, 18);
+    position: relative;
+    top: 20%;
+    margin: auto;
+    width: 340px;
+    height: 445px;
+    border-radius: 0.35em;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#title {
+    position: relative;
+    background-color: rgb(19, 18, 18);
+    width: 100%;
+    padding: 20px 0px;
+    color: white;
+    border-radius: 0.35em;
+    font-size: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.account_circle {
+    position: relative;
+}
+
+.input {
+    margin: auto;
+    width: 240px;
+    border-radius: 4px;
+    background-color: #rgba(0, 0, 0, 0.2);
+    padding: 8px 0px;
+    margin-top: 15px;
+}
+
+.input-box {
+    float: left;
+    background-color: #373b3d;
+    border: 1px solid #373b3d;
+    padding: 4px 8px;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
