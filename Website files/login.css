@@ -14,19 +14,19 @@ body {
     width: 340px;
     height: 445px;
     border-radius: 0.35em;
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
-#container-register {
+#register-box {
     background-color: #1D1F20;
     position: relative;
-    top: 20%;
+    top: 10%;
     margin: auto;
     width: 340px;
-    height: 480px;
+    height: 580px;
     border-radius: 0.35em;
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
