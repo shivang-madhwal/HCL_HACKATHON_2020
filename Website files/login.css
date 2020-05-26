@@ -24,7 +24,7 @@ body {
     top: 10%;
     margin: auto;
     width: 340px;
-    height: 580px;
+    height: 600px;
     border-radius: 0.35em;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
     text-align: center;
@@ -73,6 +73,15 @@ input[type=text] {
 
 input[type=text]:focus {
     border: 1px solid #373b3d;
+}
+
+input[type=date] {
+    color: #949494;
+    margin: 0;
+    background-color: #373b3d;
+    border: 1px solid #373b3d;
+    padding: 2px 0px;
+    border-radius: 3px;
 }
 
 input[type=password] {
