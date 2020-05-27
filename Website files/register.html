@@ -38,11 +38,35 @@
 
             <div class="clearfix"></div>
 
+             <div class="input">
+                <div class="input-box">
+                    <i class="material-icons">gender</i>
+                </div>
+                 <p>Please select your gender:</p>
+                      <input type="radio" id="male" name="gender" value="male">
+                      <label for="male">Male</label><br>
+                      <input type="radio" id="female" name="gender" value="female">
+                      <label for="female">Female</label><br>
+                      <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="input">
+                <div class="input-box">
+                    <i class="material-icons">phone</i>
+                </div>
+                <input id="phone" placeholder="Mobile No." type="number" required class="validate" autocomplete="off">
+            </div>
+
+            <div class="clearfix"></div>
+
             <div class="input">
                 <div class="input-box">
                     <i class="material-icons">account_circle</i>
                 </div>
-                <input id="username" placeholder="Username" type="text" required class="validate" autocomplete="off">
+                <input id="Username" placeholder="Username" type="text" required class="validate" autocomplete="off">
             </div>
 
             <div class="clearfix"></div>
@@ -51,7 +75,7 @@
                 <div class="input-box">
                     <i class="material-icons">email</i>
                 </div>
-                <input id="email" placeholder="Email" type="email" required class="validate" autocomplete="off">
+                <input id="E-mail" placeholder="Email" type="email" required class="validate" autocomplete="off">
             </div>
 
             <div class="clearfix"></div>
@@ -60,7 +84,7 @@
                 <div class="input-box">
                     <i class="material-icons">vpn_key</i>
                 </div>
-                <input id="password" placeholder="Password" type="password" required class="validate" autocomplete="off">
+                <input id="Password" placeholder="Password" type="password" required class="validate" autocomplete="off">
             </div>
 
             <div class="remember-me">
@@ -72,7 +96,7 @@
         </form>
 
         <div class="register">
-            Do you already have an account?
+            Already have an account?
             <a href="login.html" target="_self"><button id="register-link">Log In here</button></a>
         </div>
     </div>
