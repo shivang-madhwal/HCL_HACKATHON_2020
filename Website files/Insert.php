@@ -18,18 +18,18 @@ if (!empty($name) || !empty($dob) || !empty($gender) || !empty($phone) || !empty
      die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
     } else {
      $SELECT = "SELECT username From register Where username = ? Limit 1";
-     $INSERT = "INSERT Into register (name, dob, gender, username, email, password) values(?, ?, ?, ?, ?, ?)";
+     $INSERT = "INSERT Into register (name, dob, gender, phone, username, email, password) values(?, ?, ?, ?, ?, ?, ?)";
      //Prepare statement
      $stmt = $conn->prepare($SELECT);
-     $stmt->bind_param("s", $username);
+     $stmt->bind_param("s", $email);
      $stmt->execute();
-     $stmt->bind_result($username);
+     $stmt->bind_result($email);
      $stmt->store_result();
      $rnum = $stmt->num_rows;
      if ($rnum==0) {
       $stmt->close();
       $stmt = $conn->prepare($INSERT);
-      $stmt->bind_param("ssssii", $name, $dob, $gender, $username, $email, $password);
+      $stmt->bind_param("sssisss", $name, $dob, $gender, $phone, $username, $email, $password);
       $stmt->execute();
       echo "New record inserted sucessfully";
      } else {
