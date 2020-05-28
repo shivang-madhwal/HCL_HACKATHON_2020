@@ -24,7 +24,7 @@ body {
     top: 10%;
     margin: auto;
     width: 340px;
-    height: 600px;
+    height: 710px;
     border-radius: 0.35em;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
     text-align: center;
@@ -85,6 +85,15 @@ input[type=date] {
 }
 
 input[type=password] {
+    color: #949494;
+    margin: 0;
+    background-color: #373b3d;
+    border: 1px solid #373b3d;
+    padding: 6px 0px;
+    border-radius: 3px;
+}
+
+input[type = radio]{
     color: #949494;
     margin: 0;
     background-color: #373b3d;
