@@ -33,10 +33,38 @@
         <div class="container px-5 py-24 mx-auto">
           <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
 
+<!-- ############################### -->
+<h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">Shopping Cart
+</h1>
+<br>
+<hr>
+<div id="tableItems">
+    {% for row in products %}
+    <div>
+        <hr id="seperator">
+        <div id="itemImage">
+            <img src={{url_for('static', filename='uploads/'+row[3])}} id="image"/>
+        </div>
+        <div id="itemName">
+            <span id="itemNameTag">{{row[1]}}</span><br>
+            In stock<br>
+            <a href="/removeFromCart?productId={{row[0]}}">Remove</a>
+        </div>
+        <div id="itemPrice">
+            ${{row[2]}}
+        </div>
+    </div>
+    {% endfor %}
+    <hr id="seperator">
+    <div id="total">
+        <span id="subtotal">Subtotal</span> : ${{totalPrice}}
+    </div>
+</div>
+<!-- ############################### -->
 
             
-          </div>
         </div>
-      </section>
-    </body>
-    </html>
+    </div>
+</section>
+</body>
+</html>
