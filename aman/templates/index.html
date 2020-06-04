@@ -18,7 +18,11 @@
           </a>
           <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <a href="/" class="mr-5 hover:text-white">Home</a>   <!--can put href here-->
-            <a class="mr-5 hover:text-white">About</a>
+            {% if not loggedIn %}
+            <a href="/loginForm" class="mr-5 hover:text-white">Sign In</a>
+            {% else %}
+            <a class="mr-5 hover:text-white">Hello, <br>{{firstName}}</a>
+            {% endif %}
             <a class="mr-5 hover:text-white">Contact</a>
           </nav>
           <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Cart

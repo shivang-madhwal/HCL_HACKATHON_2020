@@ -23,7 +23,7 @@ conn.execute('''CREATE TABLE products
 		(productId INTEGER PRIMARY KEY,
 		name TEXT,
 		description TEXT,
-		image TEXT,
+		image TEXT
 		)''')
 
 conn.execute('''CREATE TABLE kart
