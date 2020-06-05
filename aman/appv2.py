@@ -80,7 +80,7 @@ def parse(data):
     i = 0
     while i < len(data):
         curr = []
-        for j in range(7):
+        for k in range(7):
             if i >= len(data):
                 break
             curr.append(data[i])
