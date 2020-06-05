@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scaled = 1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <title>Regiistration</title>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/validateForm.js') }}">
+    </script>
+    <title>Registration</title>
 </head>
 <body>
 
@@ -31,20 +33,16 @@
         <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
          	<div class="lg:w-2/6 md:w-1/2 bg-gray-800 rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0" style="position:relative; left: 50%; transform: translateX(-50%);">
          		<h2 class="text-white text-lg font-medium title-font mb-5" style="text-align: center;">Register</h2>
-         		<form action="/registerv1" method="POST">
-         		 <input class="bg-gray-900 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="name" placeholder="First Name" type="text" style="position: relative; left: 50%; transform: translateX(-50%);" required>
-         		  <input class="bg-gray-900 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="name" placeholder="Last Name" type="text" style="position: relative; left: 50%; transform: translateX(-50%); width: 70%;" required>
-         		   <input class="bg-gray-900 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="DOB" placeholder="MM/DD/YYYY" type="date" style="position: relative; left: 50%; transform: translateX(-50%); width: 70%;" required>
+         		<form action="/register" method="POST" onsubmit="return validate()">
+         		 <input class="bg-gray-900 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="firstName" placeholder="First Name" type="text" style="position: relative; left: 50%; transform: translateX(-50%);" required>
+         		  <input class="bg-gray-900 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="lastName" placeholder="Last Name" type="text" style="position: relative; left: 50%; transform: translateX(-50%); " required>
+         		   <input class="bg-gray-900 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="dob" placeholder="Date of Birth" type="text" onfocus="(this.type='date')" style="position: relative; left: 50%; transform: translateX(-50%); width: 67%;" required>
          		   <input class="bg-gray-900 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="email" placeholder="E-mail" type="email" style="position: relative; left: 50%; transform: translateX(-50%);" required>
-         		   <input class="bg-gray-900 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="Password" placeholder="Password" type="password" style="position: relative; left: 50%; transform: translateX(-50%);" required>
-         		   <input class="bg-gray-900 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="Password" placeholder="Confirm Password" type="password" style="position: relative; left: 50%; transform: translateX(-50%);" required>
-         		   <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" style="position: relative;left: 50%; transform: translateX(-50%); top: 50%;" >Log In</button><br>
+         		   <input class="bg-gray-900 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="password" placeholder="Password" type="password" style="position: relative; left: 50%; transform: translateX(-50%);" required>
+         		   <input class="bg-gray-900 rounded border text-white border-gray-900 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="cpassword" placeholder="Confirm Password" type="password" style="position: relative; left: 50%; transform: translateX(-50%);" required>
+                <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" style="position: relative;left: 50%; transform: translateX(-50%); top: 50%;" >Sign In</button><br>
+                <a href="/loginForm">Already have an account? Login here</a>
          		</form>
-
-
-
-
-            
           </div>
         </div>
       </section>

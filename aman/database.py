@@ -10,13 +10,7 @@ conn.execute('''CREATE TABLE users
 		email TEXT,
 		firstName TEXT,
 		lastName TEXT,
-		address1 TEXT,
-		address2 TEXT,
-		zipcode TEXT,
-		city TEXT,
-		state TEXT,
-		country TEXT, 
-		phone TEXT
+		dob TEXT
 		)''')
 
 conn.execute('''CREATE TABLE products
@@ -32,6 +26,7 @@ conn.execute('''CREATE TABLE kart
 		FOREIGN KEY(userId) REFERENCES users(userId),
 		FOREIGN KEY(productId) REFERENCES products(productId)
 		)''')
+
 
 conn.close()
 
