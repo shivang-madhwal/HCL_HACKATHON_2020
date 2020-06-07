@@ -1,11 +1,19 @@
 from flask import Flask, render_template, redirect, request, session, jsonify , url_for
 import sqlite3, hashlib, os
 from werkzeug.utils import secure_filename
+from random import randint
 
 app = Flask(__name__,template_folder='templates')
 app.secret_key = 'amanyadav'
 UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# generate tickets number
+def ticketNum(date):
+    month, day = date[5:7] , date[8:10]
+    pre = str(randint(1000,9999))
+    number = pre+month+day
+    return int(number)
 
 # get Login details from database
 def getLoginDetails():
@@ -89,8 +97,11 @@ def addToCart():
             cur = conn.cursor()
             cur.execute("SELECT userId FROM users WHERE email = ?", (session['email'], ))
             userId = cur.fetchone()[0]
+            cur.execute("SELECT dob FROM users WHERE email = ?", (session['email'], ))
+            dob = cur.fetchone()[0]
+            ticketNo = ticketNum(dob)
             try:
-                cur.execute("INSERT INTO kart (userId, productId, price) VALUES (?, ?, ?)", (userId, productId, price))
+                cur.execute("INSERT INTO kart (userId, productId, price, ticketNo) VALUES (?, ?, ?, ?)", (userId, productId, price, ticketNo))
                 conn.commit()
                 msg = "Added successfully"
             except:
