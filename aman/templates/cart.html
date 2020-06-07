@@ -48,7 +48,8 @@
         <div id="itemName">
             <span id="itemNameTag">{{row[1]}}</span>
             <br>
-            <a href="/removeFromCart?productId={{row[0]}}&price={{row[2]}}">Remove</a>
+            <span id="itemNameTag">Ticket No = {{row[4]}}</span><br>
+            <a href="/removeFromCart?productId={{row[0]}}&price={{row[2]}}&ticketNo={{row[4]}}">Remove</a>
         </div>
         <div id="itemPrice">
             ${{row[2]}}

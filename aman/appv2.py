@@ -10,9 +10,15 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # generate tickets number
 def ticketNum(date):
-    month, day = date[5:7] , date[8:10]
-    pre = str(randint(1000,9999))
-    number = pre+month+day
+    year, month, day = date[2:4], date[5:7], date[8:10]
+    pre = randint(1000,9999)
+    mod = pre%3
+    if mod == 0:
+        number = str(pre)+month+day
+    elif mod == 1:
+        number = str(pre)+day+year
+    else:
+        number = str(pre)+year+month
     return int(number)
 
 # get Login details from database
@@ -121,7 +127,7 @@ def cart():
         cur = conn.cursor()
         cur.execute("SELECT userId FROM users WHERE email = ?", (email, ))
         userId = cur.fetchone()[0]
-        cur.execute("SELECT products.productId, products.name, kart.price, products.image FROM products, kart WHERE products.productId = kart.productId AND kart.userId = ?", (userId, ))
+        cur.execute("SELECT products.productId, products.name, kart.price, products.image, kart.ticketNo FROM products, kart WHERE products.productId = kart.productId AND kart.userId = ?", (userId, ))
         products = cur.fetchall()
     totalPrice = 0
     for row in products:
@@ -136,12 +142,13 @@ def removeFromCart():
     email = session['email']
     productId = int(request.args.get('productId'))
     price = float(request.args.get('price'))
+    ticketNo = int(request.args.get('ticketNo'))
     with sqlite3.connect('database.db') as conn:
         cur = conn.cursor()
         cur.execute("SELECT userId FROM users WHERE email = ?", (email, ))
         userId = cur.fetchone()[0]
         try:
-            cur.execute("DELETE FROM kart WHERE userId = ? AND productId = ? AND price = ?", (userId, productId,price))
+            cur.execute("DELETE FROM kart WHERE userId = ? AND productId = ? AND price = ? AND ticketNo=?", (userId, productId,price,ticketNo))
             conn.commit()
             msg = "removed successfully"
         except:

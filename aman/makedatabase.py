@@ -4,7 +4,7 @@ cursor = con.cursor()
 sqlite_insert_query = """INSERT INTO products
             (productId,name,description,image)
             VALUES
-            (4,'Naruto','Yellow','Ticket042.png')"""
+            (1,'PUBG','Brown','PUBG.png')"""
 
 
 count = cursor.execute(sqlite_insert_query)
