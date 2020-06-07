@@ -8,42 +8,48 @@
 </head>
 <body>
 
-    <header class="text-gray-500 bg-gray-900 body-font">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg>
-            <span class="ml-3 text-xl">Lottery</span>
-          </a>
-          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a href= "/" class="mr-5 hover:text-white">Home</a> 
-            <a class="mr-5 hover:text-white">About</a>
-            <a class="mr-5 hover:text-white">Contact</a>
-          </nav>
-          <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Cart
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </button>
+  <header class="text-gray-500 bg-gray-900 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span class="ml-3 text-xl">Tickets</span>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <a href="/" class="mr-5 hover:text-white">Home</a>   <!--can put href here-->
+        {% if not loggedIn %}
+        <a href="/loginForm" class="mr-5 hover:text-white">Sign In</a>
+        {% else %}
+        <a class="mr-5 hover:text-white">Hello {{firstName}}</a>
+        <div class="dropdown-content">
+          <a href="/logout">Sign Out</a>
         </div>
-      </header>
+        {% endif %}
+      </nav>
+      <a href="/cart" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Cart ({{noOfItems}})
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </header>
       
       <section class="text-gray-500 bg-gray-900 body-font">
         <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div class="lg:max-w-xs lg:w-full md:w-1/2 w-5/6 md:mb-0 mb-10">
-            <img class="object-cover object-center rounded" alt="hero" src="/static/images/Ticket042.png"/>
+            <img class="object-cover object-center rounded" alt="ticket" src={{url_for('static', filename='uploads/' + data[3]) }}/>
           </div>
           <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">Limited Edition
-              <br class="hidden lg:inline-block">Iron Man Ticket
+            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
+              <br class="hidden lg:inline-block">{{data[1]}}
             </h1>
-            <p class="mb-8 leading-relaxed">Some description about ticket</p>
+            <p class="mb-8 leading-relaxed">{{data[2]}}</p>
             <p class="mt-1">${{price}}</p>
             <br>
             <div class="flex justify-center">
-              <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Buy</button>
-              <button class="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg">Add to Cart</button>
+              <a href="/addToCart?productId={{request.args.get('productId')}}&price={{price}}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Add to Cart</a>
+              <!-- <a href="/addToCart?productId={{request.args.get('productId')}}&price={{price}}" class="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg">Add to Cart</a> -->
             </div>
           </div>
         </div>

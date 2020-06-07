@@ -27,121 +27,45 @@
             </div>
             {% endif %}
           </nav>
-          <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Cart ({{noOfItems}})
+          <a href="/cart" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Cart ({{noOfItems}})
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
-          </button>
+          </a>
         </div>
       </header>
-      
+
+
+
       <section class="text-gray-500 bg-gray-900 body-font">
         <div class="container px-5 py-24 mx-auto">
+
+          <div class="flex flex-col">
+            <div class="h-1 bg-gray-800 rounded overflow-hidden">
+              <div class="w-24 h-full bg-indigo-500"></div>
+            </div>
+            <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
+              <h1 class="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0">Tickets You May Like</h1>
+            </div>
+          </div>
+          
           <div class="flex flex-wrap -m-4">
+            
+            {% for data in itemData %}
+            {% for row in data %}
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
               <a class="rounded overflow-hidden">
-                <form action="{{ url_for('ticket') }}" method = "POST">
-                  <button type="submit" name = "price" value="{{price}}">
-                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="\static\images\Ticket042.png">
-                  </button>  
-                </form>
+                <a href="/productDescription?productId={{row[0]}}&entry={{price}}">
+                    <img src={{ url_for('static', filename='uploads/' + row[3]) }} />
+                </a>
               </a>
               <div class="mt-4">
-                <h2 class="text-white title-font text-lg font-medium">The Catalyzer</h2>
+                <h2 " class="text-white title-font text-lg font-medium">{{row[1]}}</h2>
                 <p class="mt-1">${{price}}</p>
               </div>
             </div>
-            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <a class="rounded overflow-hidden">
-                <form action="{{ url_for('ticket') }}" method = "POST">
-                  <button type="submit" name = "price" value="{{price}}">
-                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="\static\images\Ticket042.png">
-                  </button>  
-                </form>
-              </a>
-              <div class="mt-4">
-                <h2 class="text-white title-font text-lg font-medium">Shooting Stars</h2>
-                <p class="mt-1">${{price}}</p>
-              </div>
-            </div>
-            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <a class="rounded overflow-hidden">
-                <form action="{{ url_for('ticket') }}" method = "POST">
-                  <button type="submit" name = "price" value="{{price}}">
-                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="\static\images\Ticket042.png">
-                  </button>  
-                </form>
-              </a>
-              <div class="mt-4">
-                <h2 class="text-white title-font text-lg font-medium">Neptune</h2>
-                <p class="mt-1">${{price}}</p>
-              </div>
-            </div>
-            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <a class="rounded overflow-hidden">
-                <form action="{{ url_for('ticket') }}" method = "POST">
-                  <button type="submit" name = "price" value="{{price}}">
-                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="\static\images\Ticket042.png">
-                  </button>  
-                </form>
-              </a>
-              <div class="mt-4">
-                <h2 class="text-white title-font text-lg font-medium">The 400 Blows</h2>
-                <p class="mt-1">${{price}}</p>
-              </div>
-            </div>
-            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <a class="rounded overflow-hidden">
-                <form action="{{ url_for('ticket') }}" method = "POST">
-                  <button type="submit" name = "price" value="{{price}}">
-                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="\static\images\Ticket042.png">
-                  </button>  
-                </form>
-              </a>
-              <div class="mt-4">
-                <h2 class="text-white title-font text-lg font-medium">The Catalyzer</h2>
-                <p class="mt-1">${{price}}</p>
-              </div>
-            </div>
-            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <a class="rounded overflow-hidden">
-                <form action="{{ url_for('ticket') }}" method = "POST">
-                  <button type="submit" name = "price" value="{{price}}">
-                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="\static\images\Ticket042.png">
-                  </button>  
-                </form>
-              </a>
-              <div class="mt-4">
-                <h2 class="text-white title-font text-lg font-medium">Shooting Stars</h2>
-                <p class="mt-1">${{price}}</p>
-              </div>
-            </div>
-            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <a class="rounded overflow-hidden">
-                <form action="{{ url_for('ticket') }}" method = "POST">
-                  <button type="submit" name = "price" value="{{price}}">
-                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="\static\images\Ticket042.png">
-                  </button>  
-                </form>
-              </a>
-              <div class="mt-4">
-                <h2 class="text-white title-font text-lg font-medium">Neptune</h2>
-                <p class="mt-1">${{price}}</p>
-              </div>
-            </div>
-            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-              <a class="rounded overflow-hidden">
-                <form action="{{ url_for('ticket') }}" method = "POST">
-                  <button type="submit" name = "price" value="{{price}}">
-                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="\static\images\Ticket042.png">
-                  </button>  
-                </form>
-              </a>
-              <div class="mt-4">
-                <h2 class="text-white title-font text-lg font-medium">The 400 Blows</h2>
-                <p class="mt-1">${{price}}</p>
-              </div>
-            </div>
+            {% endfor %}
+            {% endfor %}
           </div>
         </div>
       </section>
