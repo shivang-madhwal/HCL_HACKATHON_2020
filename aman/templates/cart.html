@@ -42,17 +42,16 @@
     {% for row in products %}
     <div>
         <hr id="seperator">
-        <div id="itemImage">
-            <img src={{url_for('static', filename='uploads/'+row[3])}} id="image"/>
-        </div>
-        <div id="itemName">
-            <span id="itemNameTag">{{row[1]}}</span>
+        <div id="itemImage" style="max-width: 35%; padding: 30px;">
+            <img src={{url_for('static', filename='uploads/'+row[3])}} style="width: 80%; height: auto;" id="image"/>
+             <span id="itemNameTag" style="position: relative; left: -25px;">{{row[1]}}</span>
             <br>
-            <span id="itemNameTag">Ticket No = {{row[4]}}</span><br>
-            <a href="/removeFromCart?productId={{row[0]}}&price={{row[2]}}&ticketNo={{row[4]}}">Remove</a>
-        </div>
-        <div id="itemPrice">
+            <span id="itemNameTag" style="position: relative; left: -25px;">Ticket No = {{row[4]}}</span><br>
+             <div id="itemPrice" style="position: relative; left: -25px;">
             ${{row[2]}}
+        		</div>
+            <a href="/removeFromCart?productId={{row[0]}}&price={{row[2]}}&ticketNo={{row[4]}}" class=" hover:text-white" style="position: relative; left: -25px; text-decoration: underline;">Remove</a>
+
         </div>
     </div>
     {% endfor %}
