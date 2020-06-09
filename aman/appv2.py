@@ -43,6 +43,7 @@ def is_valid(email, password):
     cur = con.cursor()
     cur.execute('SELECT email, password FROM users')
     data = cur.fetchall()
+    con.close()
     for row in data:
         if row[0] == email and row[1] == hashlib.md5(password.encode()).hexdigest():
             return True
@@ -77,6 +78,7 @@ def catalog():
         cur.execute('SELECT productId, name, description, image FROM products')
         itemData = cur.fetchall() 
     itemData = parse(itemData) 
+    conn.close()
     return render_template('catalog.html',price = entry,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,itemData = itemData)
 
 # Ticket Page
@@ -130,6 +132,7 @@ def cart():
         cur.execute("SELECT products.productId, products.name, kart.price, products.image, kart.ticketNo FROM products, kart WHERE products.productId = kart.productId AND kart.userId = ?", (userId, ))
         products = cur.fetchall()
     totalPrice = 0
+    conn.close()
     for row in products:
         totalPrice += row[2]
     return render_template("cart.html", products = products, totalPrice=totalPrice, loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems)
