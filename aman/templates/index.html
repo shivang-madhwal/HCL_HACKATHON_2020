@@ -5,6 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scaled = 1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <title>Lottery</title>
+    <style >.dropbtn {
+        background-color: #6C7B8B;
+        color: white;
+        padding: 12px;
+        
+        border-radius: 5px;
+        width: 150px;
+        height: auto;
+  }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #8B8989;}</style>
 </head>
 <body>
 
@@ -21,17 +57,18 @@
             {% if not loggedIn %}
             <a href="/loginForm" class="mr-5 hover:text-white">Sign In</a>
             {% else %}
-            <a class="mr-5 hover:text-white">Hello {{firstName}}</a>
-            <div class="dropdown-content">
-              <a href="/logout">Sign Out</a>
+            <div class="dropdown">
+              <button class="dropbtn" >Hello {{firstName}}</button>
+              <div class="dropdown-content">
+                <a href="/cart">My Cart ({{noOfItems}})</a>
+                <a href="/logout">Sign Out
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path></a>
+              </div>
             </div>
+            
             {% endif %}
           </nav>
-          <a href="/cart" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Cart ({{noOfItems}})
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
         </div>
       </header>
       
