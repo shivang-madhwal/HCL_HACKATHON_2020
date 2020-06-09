@@ -194,8 +194,9 @@ def firstlogin():
 
 @app.route("/choice",methods = ['POST','GET'])
 def choice():
-    #write code here
-    a=1
+    
+    return render_template("choice.html")
+    
 
 # registration
 @app.route("/registerationForm")
