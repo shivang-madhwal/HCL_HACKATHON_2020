@@ -180,6 +180,22 @@ def login():
             error = 'Invalid Email / Password'
             return render_template('login.html', error=error)
 
+@app.route("/firstlogin", methods = ['POST', 'GET'])
+def firstlogin():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        if is_valid(email, password):
+            session['email'] = email
+            return redirect(url_for('choice'))
+        else:
+            error = 'Invalid Email / Password'
+            return render_template('login.html', error=error)
+
+@app.route("/choice",methods = ['POST','GET'])
+def choice():
+    #write code here
+    a=1
 
 # registration
 @app.route("/registerationForm")
@@ -208,7 +224,7 @@ def register():
                 con.rollback()
                 msg = "Error occured"
         con.close()
-        return render_template("login.html", error=msg)
+        return render_template("firstlogin.html", error=msg)
 
 @app.route("/logout")
 def logout():
