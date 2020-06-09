@@ -42,7 +42,7 @@
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #4a5568;}</style>
+.dropdown:hover .dropbtn {background-color: #4a5568; color: white;}</style>
 </head>
 <body>
 
@@ -55,7 +55,7 @@
         <span class="ml-3 text-xl">Your Cart</span>
       </a>
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-       <button href="/" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"  style="margin-right: 5px; height: 40px;" >Home</button> 
+       <button href="/" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white"  style="margin-right: 5px; height: 40px;" >Home</button> 
         <div class="dropdown">
                {% if not loggedIn %}
                 <button class="dropbtn">Sign In</button>
