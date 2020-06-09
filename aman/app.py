@@ -118,6 +118,39 @@ def addToCart():
         conn.close()
         return redirect(url_for('index'))
 
+@app.route("/payment")
+def payment():
+    if 'email' not in session:
+        return redirect(url_for('loginForm'))
+    else:
+        email = session['email']
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute("SELECT userId FROM users WHERE email = ?", (email, ))
+            userId = cur.fetchone()[0]
+            cur.execute("INSERT INTO sales SELECT * FROM kart WHERE userId = ?",(userId,))
+            conn.commit()
+            cur.execute("DELETE FROM kart WHERE userId = ?",(userId,))
+            conn.commit()
+        conn.close()
+        return render_template('paymentsuccessful.html')
+
+@app.route("/myTickets")
+def myTickets():
+    if 'email' not in session:
+        return redirect(url_for('loginForm'))
+    loggedIn, firstName, noOfItems = getLoginDetails()
+    email = session['email']
+    with sqlite3.connect('database.db') as conn:
+        cur = conn.cursor()
+        cur.execute("SELECT userId FROM users WHERE email = ?", (email, ))
+        userId = cur.fetchone()[0]
+        cur.execute("SELECT products.productId, products.name, sales.price, products.image, sales.ticketNo FROM products, sales WHERE products.productId = sales.productId AND sales.userId = ?", (userId, ))
+        items = cur.fetchall()
+    conn.close()
+    return render_template("mytickets.html", items = items, loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems)
+
+
 #cart
 @app.route("/cart")
 def cart():

@@ -29,6 +29,14 @@ conn.execute('''CREATE TABLE kart
 		FOREIGN KEY(productId) REFERENCES products(productId)
 		)''')
 
-
+conn.execute('''CREATE TABLE sales
+		(userId INTEGER,
+		productId INTEGER,
+		price REAL,
+		ticketNo INTEGER,
+		FOREIGN KEY(userId) REFERENCES users(userId),
+		FOREIGN KEY(productId) REFERENCES products(productId)
+		)''')
+		
 conn.close()
 
