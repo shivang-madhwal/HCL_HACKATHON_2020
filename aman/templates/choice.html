@@ -33,53 +33,58 @@
           <div class="w-24 h-full bg-indigo-500"></div>
         </div>
         <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
-          <h1 class="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0">Your fav superhero?</h1>
+          <h1 class="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0" >Your fav topic?</h1>
         </div>
       </div>
 
-  <section class="text-gray-500 bg-gray-900 body-font">
-    <div class="container px-5 py-24 mx-auto">
+  <section class="text-gray-500 bg-gray-900 body-font" style="position: relative; top: -85px;">
+    <form>
+    <div class="container px-5 py-12 mx-auto">
       <div class="flex flex-wrap -m-4">
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260">
+            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRPvSFwXQZvWHLTrHYmeU6095ARSWnzDWY4s9ZGWDB45S7vqb3H&usqp=CAU">
           </a>
           <div class="mt-4">
-            <h2 class="text-white title-font text-lg font-medium">The Catalyzer</h2>
+            <input type="radio" id="heroes" name="preference" value="heroes" required>
+            <label for="heroes" style="font-size: large;">SuperHeroes</label><br>
           </div>
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/421x261">
+            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://www.delhicourses.in/blog/wp-content/uploads/2020/01/OTT-Industry.jpg">
           </a>
           <div class="mt-4">
-            <h2 class="text-white title-font text-lg font-medium">Shooting Stars</h2>
+          <input type="radio" id="TV Series" name="preference" value="TV Series">
+          <label for="TV Series" style="font-size: large;">TV Series</label><br>          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgTPhSypNwM-qI9hSrRRQkQo6fgj3jQgprq4-dP1_2uM-8_wmG&usqp=CAU">
+          </a>
+          <div class="mt-4">
+          <input type="radio" id="Anime" name="preference" value="Anime">
+          <label for="Anime" style="font-size: large;">Anime</label><br>
           </div>
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/422x262">
+            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR6HZyKS-GyGOiNKVwvRNVHMekHP8PEdYNxrJWt2AsjRBeiKVhN&usqp=CAU">
           </a>
           <div class="mt-4">
-            <h2 class="text-white title-font text-lg font-medium">Neptune</h2>
-          </div>
-        </div>
-        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-          <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/423x263">
-          </a>
-          <div class="mt-4">
-            <h2 class="text-white title-font text-lg font-medium">The 400 Blows</h2>
+           <input type="radio" id="Anime" name="preference" value="Anime">
+          <label for="Anime" style="font-size: large;">Cartoons</label><br>
           </div>
         </div>
 
-        <a href="/" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Skip
+        <a href="/login.html" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white" style=" position: relative; left: 50%; transform: translateX(-50%);">Proceed
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
           </a>
       </div>
     </div>
+  </form>
   </section>
 </body>
 </html>
