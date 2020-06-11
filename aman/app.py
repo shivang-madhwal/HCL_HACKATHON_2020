@@ -260,6 +260,9 @@ def register():
         con.close()
         return render_template("firstlogin.html", error=msg)
 
+@app.route("/terms")
+def terms():
+    return render_template('terms.html')
 @app.route("/logout")
 def logout():
     session.pop('email', None)
