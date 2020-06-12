@@ -290,6 +290,7 @@ def register():
 @app.route("/terms")
 def terms():
     return render_template('terms.html')
+    
 @app.route("/logout")
 def logout():
     session.pop('email', None)
