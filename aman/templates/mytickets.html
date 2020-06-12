@@ -106,9 +106,9 @@ display: block;
                     <img  src={{ url_for('static', filename='uploads/' + row[3]) }} />
               </a>
               <div class="mt-4">
-                <h2 " class="text-white title-font text-lg font-medium">{{row[1]}}</h2>
-                <span id="itemNameTag" style="position: relative; left: -25px;">Ticket No = {{row[4]}}</span><br>
-                <p class="mt-1">${{row[2]}}</p>
+                <h2 " class="text-white title-font text-lg font-medium"  style="text-align: center;">{{row[1]}}</h2>
+                <p class="mt-1"  style="text-align: center;">Ticket No = {{row[4]}}</p>
+                <p class="mt-1"  style="text-align: center;">${{row[2]}}</p>
               </div>
             </div>
             {% endfor %}
