@@ -23,11 +23,18 @@ def item(id):
     return ds.loc[ds['id'] == id]['description'].tolist()[0].split(' - ')[0]
 
 # Just reads the results out of the dictionary.
-def recommend(item_id, num):
-    print("Recommending " + str(num) + " products similar to " + item(item_id) + "...")
-    print("-------")
-    recs = results[item_id][:num]
-    for rec in recs:
-        print("Recommended: " + item(rec[1]) + " (score:" + str(round(rec[0],5)) + ")")
+# def recommend(item_id, num):
+#     print("Recommending " + str(num) + " products similar to " + item(item_id) + "...")
+#     print("-------")
+#     recs = results[item_id][:num]
+#     for rec in recs:
+#         print("Recommended: " + item(rec[1]) + " (score:" + str(round(rec[0],5)) + ")")
 
-recommend(item_id=9, num=6)
+def recommend(item_id, num):
+    recs = results[item_id][:num]
+    result = []
+    for rec in recs:
+        result.append(item(rec[1])+'.png')
+    return result
+
+print(recommend(item_id=1, num=6))

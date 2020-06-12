@@ -10,7 +10,8 @@ conn.execute('''CREATE TABLE users
 		email TEXT,
 		firstName TEXT,
 		lastName TEXT,
-		dob TEXT
+		dob TEXT,
+		preferences TEXT
 		)''')
 
 conn.execute('''CREATE TABLE products

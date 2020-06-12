@@ -2,11 +2,37 @@ from flask import Flask, render_template, redirect, request, session, jsonify , 
 import sqlite3, hashlib, os
 from werkzeug.utils import secure_filename
 from random import randint
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import linear_kernel
 
 app = Flask(__name__,template_folder='templates')
 app.secret_key = 'amanyadav'
 UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# Machine Learning
+ds = pd.read_csv("tickets-new.csv")
+tf = TfidfVectorizer(analyzer='word', ngram_range=(1, 3), min_df=0, stop_words='english')
+tfidf_matrix = tf.fit_transform(ds['description'])
+
+cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
+
+results = {}
+for idx, row in ds.iterrows():
+    similar_indices = cosine_similarities[idx].argsort()[:-100:-1]
+    similar_items = [(cosine_similarities[idx][i], ds['id'][i]) for i in similar_indices]
+
+    results[row['id']] = similar_items[1:]
+def item(id):
+    return ds.loc[ds['id'] == id]['description'].tolist()[0].split(' - ')[0]
+
+def recommend(item_id, num):
+    recs = results[item_id][:num]
+    result = []
+    for rec in recs:
+        result.append(item(rec[1])+'.png')
+    return result
 
 # generate tickets number
 def ticketNum(date):
@@ -92,7 +118,8 @@ def productDescription():
         cur.execute('SELECT productId, name, description, image FROM products WHERE productId = ?', (productId, ))
         productData = cur.fetchone()
     conn.close()
-    return render_template("ticket.html", data=productData,price=price,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems)
+    suggest = recommend(item_id = int(productId),num = 5)
+    return render_template("ticket.html", data=productData,price=price,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,suggest = suggest)
 
 @app.route("/addToCart")
 def addToCart():
