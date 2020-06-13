@@ -88,9 +88,10 @@
     {% for row in products %}
     <div>
         <hr id="seperator">
-        <div id="itemImage" style="max-width: 35%; padding: 30px;">
-            <img src={{url_for('static', filename='uploads/'+row[3])}} style="width: 80%; height: auto;" id="image"/>
-             <span id="itemNameTag" style="position: relative; left: -25px;">{{row[1]}}</span>
+        <div id="itemImage" style="width: 35%; padding: 30px; height: auto;">
+            <img src={{url_for('static', filename='uploads/'+row[3])}} style="width: 100%; height: auto;" id="image"/>
+        </div>
+             <span id="itemNameTag" style="position: absolute; left: -25px;">{{row[1]}}</span>
             <br>
             <span id="itemNameTag" style="position: relative; left: -25px;">Ticket No = {{row[4]}}</span><br>
              <div id="itemPrice" style="position: relative; left: -25px;">
