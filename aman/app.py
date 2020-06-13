@@ -11,7 +11,7 @@ app.secret_key = 'amanyadav'
 UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Machine Learning
+# Machine Learning - Cosine Similarities
 ds = pd.read_csv("tickets-new.csv")
 tf = TfidfVectorizer(analyzer='word', ngram_range=(1, 3), min_df=0, stop_words='english')
 tfidf_matrix = tf.fit_transform(ds['description'])
