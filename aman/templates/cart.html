@@ -87,19 +87,21 @@
 <div id="tableItems">
     {% for row in products %}
     <div>
-        <hr id="seperator">
-        <div id="itemImage" style="width: 35%; padding: 30px; height: auto;">
-            <img src={{url_for('static', filename='uploads/'+row[3])}} style="width: 100%; height: auto;" id="image"/>
-        </div>
-             <span id="itemNameTag" style="position: absolute; left: -25px;">{{row[1]}}</span>
+        <hr id="seperator" style=" width: 50%; position: absolute; left: 50%; transform: translateX(-50%);">
+        <div id="itemImage" style="">
+            <img src={{url_for('static', filename='uploads/'+row[3])}} style="width: 25%; display: inline-block; position: relative;  height: auto; padding: 12px; " id="image"/>
+            <div style="position: relative;  display: inline-block; text-align: center; vertical-align: middle; align-items: left;">
+             <span id="itemNameTag" style="position: relative; text-align: center;">{{row[1]}}</span>
             <br>
-            <span id="itemNameTag" style="position: relative; left: -25px;">Ticket No = {{row[4]}}</span><br>
-             <div id="itemPrice" style="position: relative; left: -25px;">
+            <span id="itemNameTag" style="position: relative; text-align: center; ">Ticket No = {{row[4]}}</span><br>
+             <div id="itemPrice" style="position: relative; text-align: center;  ">
             ${{row[2]}}
         		</div>
-            <a href="/removeFromCart?productId={{row[0]}}&price={{row[2]}}&ticketNo={{row[4]}}" class="text-indigo-500 inline-flex items-center mt-3" style="position: relative; left: -25px; text-decoration: underline;">Remove</a>
+            <a href="/removeFromCart?productId={{row[0]}}&price={{row[2]}}&ticketNo={{row[4]}}" class="text-indigo-500 inline-flex items-center mt-3 hover:text-white" style="position: relative; text-decoration: underline; text-align: center; color: #a0aec0; " >Remove</a>
             <!-- class=" hover:text-white" -->
         </div>
+         <hr id="seperator" style=" width: 50%; position: absolute; left: 50%; transform: translateX(-50%);">
+    </div>
     </div>
     {% endfor %}
     <hr id="seperator">
