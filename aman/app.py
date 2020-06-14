@@ -220,6 +220,10 @@ def removeFromCart():
     conn.close()
     return redirect(url_for('cart'))
 
+@app.route("/custom")
+def customTicket():
+    return render_template('customticket.html')
+
 # Login
 @app.route("/loginForm")
 def loginForm():

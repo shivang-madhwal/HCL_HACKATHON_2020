@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scaled = 1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/customTicket.css">
+
+    <title>Custom Ticket</title>
+    <style >.dropbtn {
+      background-color: #2d3748;
+      color: white;
+      padding: 12px;
+      vertical-align: middle;
+      border-radius: 5px;
+      width: 150px;
+      height: 40px;
+      padding: 2px;
+      color: #a0aec0;
+
+}
+
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #4a5568; color: #fff}</style>
+</head>
+<body class="bg-gray-900">
+
+  <header class="text-gray-500 bg-gray-900 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+        <svg xmlns="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span class="ml-3 text-xl">Make your own ticket</span>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <a href="/" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white"  style="margin-right: 5px; height: 40px;" >Home</a> 
+        <a href="/cart" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white" style="margin-right: 5px; height: 40px;">Cart ({{noOfItems}})
+           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+           <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        
+       
+        <div class="dropdown">
+           {% if not loggedIn %}
+            <button class="dropbtn">Sign In</button>
+            <div class="dropdown-content">
+                <a href="/loginForm"> Login</a><hr>
+                <a href="/registerationForm"> Sign Up</a> 
+           {% else %}
+          <button class="dropbtn" >Hello, {{firstName}}</button>
+          <div class="dropdown-content">
+            <a href="/myTickets">My Tickets</a><hr>
+            <a href="/logout">Sign Out
+          <path d="M5 12h14M12 5l7 7-7 7"></path></a>
+          </div>
+        </div>
+        
+        {% endif %}
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ########################## -->
+
+  <div id="container">
+
+    <svg id="product-svg" xmlns="http://www.w3.org/2000/svg" height="175mm" width="90mm" viewBox="0 0 90 175.00001">
+      <path id="product-shape" d="M69.547617 18.898809H35.000594l-7.45513.02721s-5.746294.233861-6.397763 6.548103l-.01716 18.820447s4.844717 2.110097 4.493926 7.605826c0 0-.151124 4.743653-4.493861 6.572969l.000397 69.147836s.283974 5.93004 6.347652 6.58151l42.696304-.0167s5.774634-.12258 6.41247-6.66629l-.01064-69.042352s-4.199138-1.521251-4.492032-6.529351c0 0-.857504-5.138602 4.492043-7.660124l.01064-18.703627s-.141743-6.401971-7.039806-6.685453z" fill="none" stroke="#000" stroke-width=".264583"/>
+      
+    </svg>
+      
+      <img id="background-image" src="https://raw.githubusercontent.com/shivang-madhwal/HCL_HACKATHON_2020/d075fae59cac9b88a90fd4ca35e808802037e93e/aman/CodePen_Export_xxZVjqq/ticket-skeleton.svg" alt="">
+      <!-- <img id="background-image" src="../uploads/ticket-skeleton.svg" alt=""> -->
+    
+    </div>
+    
+    <div class="colors">
+      <div class="color" style="background-color: #e1e851" data-hex="#e1e851"></div>
+      <div class="color" style="background-color: #8cd147" data-hex="#8cd147"></div>
+      <div class="color" style="background-color: #4a9ccf" data-hex="#4a9ccf"></div>
+      <div class="color" style="background-color: #661f45" data-hex="#661f45"></div>
+      <div class="color" style="background-color: #1e2024" data-hex="#1e2024"></div>
+    </div>
+  <script  src="../static/js/customTicket.js"></script>
+
+
+  <!-- ########################## -->
+</body>
+</html>
