@@ -6,8 +6,8 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
 
 #yaha{
-  height: 200px;
-  width: 300px;
+  height: 150px;
+  width: 250px;
   font: 5.5em/1 Open Sans, Impact;
   text-transform: uppercase;
 
@@ -47,7 +47,7 @@
 }
 
 .text:nth-child(5n + 5) {
-  stroke: #F5A503;
+  stroke: #FD5F00;
   -webkit-animation-delay: -6s;
   animation-delay: -6s;
 }
@@ -65,13 +65,13 @@
 }
 
 /* Other styles */
-html, body {
+/* html, body {
   height: 100%;
 }
 
 body {
   margin: 0;
-}
+} */
 
 svg {
   position: absolute;
