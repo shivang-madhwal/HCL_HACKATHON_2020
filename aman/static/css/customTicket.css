@@ -31,29 +31,15 @@ html {
   fill: #DBED64;
 }
 
-#background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100;
-  height: auto;
-  z-index: 1;
-}
 
-.colors {
-  display: flex;
+.jscolor {
   position: fixed;
-  bottom: 2em;
-  right:2em;
+  bottom: 4em;
+  right: 4em;
   z-index: 3;
-}
-
-.color {
-  height: 36px;
-  width: 36px;
-  margin-left: 0.5em;
-  border-radius: 18px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-  border: 2px solid #aaa;
+  padding: 1em;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+  border: 0;
+  border-radius: 5px;
   cursor: pointer;
 }
