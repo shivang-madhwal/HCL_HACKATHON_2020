@@ -258,8 +258,24 @@ def firstlogin():
 
 @app.route("/choice",methods = ['POST','GET'])
 def choice():
+    if request.method == 'GET':
+        return render_template("choice.html")
+    if request.method == 'POST':
+        pre1 = request.form['heroes']
+        pre2 = request.form['TV Series']
+        pre3 = request.form['Anime']
+        pre4 = request.form['Cartoon']
+        pre = pre1+','+pre2+','+pre3+','+pre4
+        email = session['email']
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute("SELECT userId FROM users WHERE email = ?", (email, ))
+            userId = cur.fetchone()[0]
+            cur.execute("UPDATE users SET preferences = ? WHERE userId = ?", (pre,userId))
+            conn.commit()
+        conn.close()
+        return  redirect(url_for('index'))
     
-    return render_template("choice.html")
     
 
 # registration
