@@ -118,8 +118,18 @@ def productDescription():
         cur.execute('SELECT productId, name, description, image FROM products WHERE productId = ?', (productId, ))
         productData = cur.fetchone()
     conn.close()
-    suggest = recommend(item_id = int(productId),num = 5)
-    return render_template("ticket.html", data=productData,price=price,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,suggest = suggest)
+    rec = recommend(item_id = int(productId),num = 5)
+    return render_template("ticket.html", data=productData,price=price,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,suggest = rec)
+# use this commented section before line 122 for ticket suggestions
+# we are getting something like [[(1, 'PUBG', '101.png')], [], [], [], []] so we will need 3D array
+"""     suggest = []
+    for tic in rec:
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute('SELECT productId, name, image FROM products WHERE image = ?', (tic, ))
+            k = cur.fetchall()
+            suggest.append(k)
+    conn.close() """
 
 @app.route("/addToCart")
 def addToCart():
