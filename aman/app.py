@@ -222,7 +222,8 @@ def removeFromCart():
 
 @app.route("/custom")
 def customTicket():
-    return render_template('customticket.html')
+    loggedIn, firstName, noOfItems = getLoginDetails()
+    return render_template('customticket.html',loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems)
 
 # Login
 @app.route("/loginForm")
