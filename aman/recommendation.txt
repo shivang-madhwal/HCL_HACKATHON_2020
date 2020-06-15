@@ -37,5 +37,6 @@ def productDescription():
           </a>
             <h2 " class="text-white title-font text-lg font-medium" style="text-align: center; margin-top: 5px;">{{i[1]}}</h2>
         </div>
-      {% endfor %}
-      {% endfor %}
+        {% end for %}
+        {% endfor %}
+        {% endfor %}
