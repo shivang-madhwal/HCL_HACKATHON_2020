@@ -64,14 +64,14 @@
       position: absolute;
       font-size: 1.6vw;
       top: 41%;
-      left: 5%;
+      left: 10%;
     }
 
     .number-top {
       color: black;
       position: absolute;
       font-size: 1.6vw;
-      top: 20%;
+      top: 14%;
       left: 25%;
     }
   </style>
@@ -148,7 +148,7 @@
             <div class="ticket">
               <div class="number-center"><b>{{row[4]}}</b></div>
               <img src={{ url_for('static', filename='uploads/' + row[3]) }} />
-              <div class="number-top">{lottery number}</div>
+              <div class="number-top"><b>{{row[4]}}</b></div>
             </div>
 
           </a>
