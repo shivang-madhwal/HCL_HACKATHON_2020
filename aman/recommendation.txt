@@ -27,8 +27,7 @@ def productDescription():
 # in html
 
         {% for tic in suggest %}
-        {% for entry in tic %}
-        {% for i in entry %}
+        {% for i in tic %}
         <div class="lg:w-1/5 md:w-1/2 p-4 w-full" style="width: 17%; height: auto; display: inline-block;">
           <a class="rounded overflow-hidden">
             <a href="/productDescription?productId={{i[0]}}&entry={{price}}">
@@ -37,6 +36,5 @@ def productDescription():
           </a>
             <h2 " class="text-white title-font text-lg font-medium" style="text-align: center; margin-top: 5px;">{{i[1]}}</h2>
         </div>
-        {% endfor %}
         {% endfor %}
         {% endfor %}
