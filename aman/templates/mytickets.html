@@ -59,12 +59,20 @@
       text-align: center;
     }
 
-    .number {
+    .number-center {
       color: black;
       position: absolute;
       font-size: 1.6vw;
       top: 41%;
       left: 5%;
+    }
+
+    .number-top {
+      color: black;
+      position: absolute;
+      font-size: 1.6vw;
+      top: 20%;
+      left: 25%;
     }
   </style>
 </head>
@@ -138,8 +146,9 @@
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="width: 25%; height: auto;">
           <a class="rounded overflow-hidden">
             <div class="ticket">
-              <div class="number"><b>{{row[4]}}</b></div>
+              <div class="number-center"><b>{{row[4]}}</b></div>
               <img src={{ url_for('static', filename='uploads/' + row[3]) }} />
+              <div class="number-top">{lottery number}</div>
             </div>
 
           </a>
