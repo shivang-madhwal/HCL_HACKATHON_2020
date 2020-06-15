@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scaled = 1.0">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <title>Order History</title>
-    <style >.dropbtn {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scaled = 1.0">
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <title>Order History</title>
+  <style>
+    .dropbtn {
       background-color: #2d3748;
       color: white;
       padding: 12px;
@@ -16,71 +18,102 @@
       padding: 2px;
       color: #a0aec0;
 
-}
+    }
 
-.dropdown {
-position: relative;
-display: inline-block;
-}
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-.dropdown-content {
-display: none;
-position: absolute;
-background-color: #f1f1f1;
-min-width: 160px;
-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-z-index: 1;
-}
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
 
-.dropdown-content a {
-color: black;
-padding: 12px 16px;
-text-decoration: none;
-display: block;
-}
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
 
-.dropdown-content a:hover {background-color: #ddd;}
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
 
-.dropdown:hover .dropdown-content {display: block;}
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
-.dropdown:hover .dropbtn {background-color: #4a5568; color: #fff}</style>
+    .dropdown:hover .dropbtn {
+      background-color: #4a5568;
+      color: #fff
+    }
+
+    .ticket {
+      position: relative;
+      text-align: center;
+    }
+
+    .number {
+      color: black;
+      position: absolute;
+      font-size: 2vw;
+      top: 13%;
+      left: 10%;
+    }
+  </style>
 </head>
+
 <body>
 
   <header class="text-gray-500 bg-gray-900 body-font">
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
       <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-        <svg xmlns="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+        <svg xmlns="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
         </svg>
         <span class="ml-3 text-xl">Your Tickets</span>
       </a>
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-        <a href="/" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white"  style="margin-right: 5px; height: 40px;" >Home</a> 
-        <a href="/cart" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white" style="margin-right: 5px; height: 40px;">Cart ({{noOfItems}})
-           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-           <path d="M5 12h14M12 5l7 7-7 7"></path>
+        <a href="/"
+          class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white"
+          style="margin-right: 5px; height: 40px;">Home</a>
+        <a href="/cart"
+          class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white"
+          style="margin-right: 5px; height: 40px;">Cart ({{noOfItems}})
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </a>
-        
-       
+
+
         <div class="dropdown">
-           {% if not loggedIn %}
-            <button class="dropbtn">Sign In</button>
-            <div class="dropdown-content">
-                <a href="/loginForm"> Login</a><hr>
-                <a href="/registerationForm"> Sign Up</a> 
-           {% else %}
-          <button class="dropbtn" >Hello, {{firstName}}</button>
+          {% if not loggedIn %}
+          <button class="dropbtn">Sign In</button>
           <div class="dropdown-content">
-            <a href="/myTickets">My Tickets</a><hr>
-            <a href="/custom">Create Ticket</a><hr>
-            <a href="/logout">Sign Out
-          <path d="M5 12h14M12 5l7 7-7 7"></path></a>
+            <a href="/loginForm"> Login</a>
+            <hr>
+            <a href="/registerationForm"> Sign Up</a>
+            {% else %}
+            <button class="dropbtn">Hello, {{firstName}}</button>
+            <div class="dropdown-content">
+              <a href="/myTickets">My Tickets</a>
+              <hr>
+              <a href="/custom">Create Ticket</a>
+              <hr>
+              <a href="/logout">Sign Out
+                <path d="M5 12h14M12 5l7 7-7 7"></path></a>
+            </div>
           </div>
-        </div>
-        
-        {% endif %}
+
+          {% endif %}
       </nav>
 
     </div>
@@ -88,33 +121,38 @@ display: block;
 
 
 
-      <section class="text-gray-500 bg-gray-900 body-font">
-        <div class="container px-5 py-24 mx-auto">
-          <div class="flex flex-col">
-            <div class="h-1 bg-gray-800 rounded overflow-hidden">
-              <div class="w-24 h-full bg-indigo-500"></div>
+  <section class="text-gray-500 bg-gray-900 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col">
+        <div class="h-1 bg-gray-800 rounded overflow-hidden">
+          <div class="w-24 h-full bg-indigo-500"></div>
+        </div>
+        <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
+          <h1 class="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0"></h1>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap -m-4">
+
+        {% for row in items %}
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="width: 25%; height: auto;">
+          <a class="rounded overflow-hidden">
+            <div class="ticket">
+              <div class="number">{ticket number}</div>
+              <img src={{ url_for('static', filename='uploads/' + row[3]) }} />
             </div>
-            <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
-              <h1 class="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0"></h1>
-            </div>
-          </div>
-          
-          <div class="flex flex-wrap -m-4">
-            
-            {% for row in items %}
-            <div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="width: 25%; height: auto;">
-              <a class="rounded overflow-hidden">
-                    <img  src={{ url_for('static', filename='uploads/' + row[3]) }} />
-              </a>
-              <div class="mt-4">
-                <h2 " class="text-white title-font text-lg font-medium"  style="text-align: center;">{{row[1]}}</h2>
-                <p class="mt-1"  style="text-align: center;">Ticket No = {{row[4]}}</p>
-                <p class="mt-1"  style="text-align: center;">${{row[2]}}</p>
-              </div>
-            </div>
-            {% endfor %}
+
+          </a>
+          <div class="mt-4">
+            <h2 " class=" text-white title-font text-lg font-medium" style="text-align: center;">{{row[1]}}</h2>
+            <p class="mt-1" style="text-align: center;">Ticket No = {{row[4]}}</p>
+            <p class="mt-1" style="text-align: center;">${{row[2]}}</p>
           </div>
         </div>
-      </section>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 </body>
+
 </html>
