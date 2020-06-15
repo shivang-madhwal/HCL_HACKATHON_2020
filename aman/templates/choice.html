@@ -38,12 +38,12 @@
             <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
           <h1 class="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0" >Your fav Superhero?</h1>
         </div>
-    <form>
+    <form action="{{ url_for('choice') }}" method="POST">
     <div class="container px-5 py-12 mx-auto">
       <div class="flex flex-wrap -m-4">
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRrlALsspZM0QwSkXRFeYO5kYw3En2Y7GzIH1YiHob5wGqY6e38&usqp=CAU">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRrlALsspZM0QwSkXRFeYO5kYw3En2Y7GzIH1YiHob5wGqY6e38&usqp=CAU">
           </a>
           <div class="mt-4">
             <input type="radio" id="Iron Man" name="heroes" value="Iron Man" required>
@@ -52,7 +52,7 @@
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://wallpaperaccess.com/full/1307358.jpg">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://wallpaperaccess.com/full/1307358.jpg">
           </a>
           <div class="mt-4">
           <input type="radio" id="Cap" name="heroes" value="Cap">
@@ -60,7 +60,7 @@
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQime3yaiWq1qN4KHZ5Y8XVEbLNaB5PGuHfWXFYFHOQ1oHT62fp&usqp=CAU">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQime3yaiWq1qN4KHZ5Y8XVEbLNaB5PGuHfWXFYFHOQ1oHT62fp&usqp=CAU">
           </a>
           <div class="mt-4">
           <input type="radio" id="Batman" name="heroes" value="Batman">
@@ -69,7 +69,7 @@
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://images4.alphacoders.com/209/209416.jpg">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://images4.alphacoders.com/209/209416.jpg">
           </a>
           <div class="mt-4">
            <input type="radio" id="Superman" name="heroes" value="Superman">
@@ -78,7 +78,7 @@
         </div>
       </div>
     </div>
-  </form>
+  <!-- </form> -->
   </section>
 
   <section class="text-gray-500 bg-gray-900 body-font" style="position: relative; top: -85px;">
@@ -90,7 +90,7 @@
       <div class="flex flex-wrap -m-4">
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://www.desktopbackground.org/p/2014/07/18/795296_game-of-thrones-backgrounds-wallpapers_1600x900_h.jpg">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://www.desktopbackground.org/p/2014/07/18/795296_game-of-thrones-backgrounds-wallpapers_1600x900_h.jpg">
           </a>
           <div class="mt-4">
             <input type="radio" id="Thrones" name="TV Series" value="Thrones" required>
@@ -99,7 +99,7 @@
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://images.wallpapersden.com/image/download/money-heist_66878_3840x2232.jpg" >
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://images.wallpapersden.com/image/download/money-heist_66878_3840x2232.jpg" >
           </a>
           <div class="mt-4">
           <input type="radio" id="Heist Series" name="TV Series" value=" Heist" required>
@@ -107,7 +107,7 @@
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://img.wallpapersafari.com/desktop/1600/900/43/49/qIHcfz.jpg">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://img.wallpapersafari.com/desktop/1600/900/43/49/qIHcfz.jpg">
           </a>
           <div class="mt-4">
           <input type="radio" id="Blinders" name="TV Series" value="Blinders">
@@ -116,7 +116,7 @@
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://images.alphacoders.com/829/thumb-1920-829130.jpg">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://images.alphacoders.com/829/thumb-1920-829130.jpg">
           </a>
           <div class="mt-4">
            <input type="radio" id="Reasons" name="TV Series" value="Reasons">
@@ -125,7 +125,7 @@
         </div>
       </div>
     </div>
-  </form>
+  <!-- </form> -->
   </section>
 
   <section class="text-gray-500 bg-gray-900 body-font" style="position: relative; top: -85px;">
@@ -137,7 +137,7 @@
       <div class="flex flex-wrap -m-4">
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/1-goku-super-saiyan-babbal-kumar.jpg">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/1-goku-super-saiyan-babbal-kumar.jpg">
           </a>
           <div class="mt-4">
             <input type="radio" id="Goku" name="Anime" value="Goku" required>
@@ -146,7 +146,7 @@
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://i.ytimg.com/vi/CTuD2EQ0p9M/maxresdefault.jpg">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://i.ytimg.com/vi/CTuD2EQ0p9M/maxresdefault.jpg">
           </a>
           <div class="mt-4">
           <input type="radio" id="Vegeta" name="Anime" value="Vegeta">
@@ -154,7 +154,7 @@
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://wallpaperaccess.com/full/493947.jpg">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://wallpaperaccess.com/full/493947.jpg">
           </a>
           <div class="mt-4">
           <input type="radio" id="Naruto" name="Anime" value="Naruto">
@@ -163,7 +163,7 @@
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://www.shecos.com/blog/wp-content/uploads/2019/12/edward-elric-cosplay.jpg">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://www.shecos.com/blog/wp-content/uploads/2019/12/edward-elric-cosplay.jpg">
           </a>
           <div class="mt-4">
            <input type="radio" id="Edward" name="Anime" value="Edward">
@@ -172,7 +172,7 @@
         </div>
       </div>
     </div>
-  </form>
+  <!-- </form> -->
   </section>
 
   
@@ -185,7 +185,7 @@
       <div class="flex flex-wrap -m-4">
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://images.squarespace-cdn.com/content/v1/54fc8146e4b02a22841f4df7/1497832653543-F9EH524VOZ7ELRAFXIEV/ke17ZwdGBToddI8pDm48kLRYo1iYLTuMb0aLuK0eAAFZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIAe7EifWA29OMyP628llsvFnISd6lGiCkuajMMxH8C5wKMshLAGzx4R3EDFOm1kBS/Doraemon-12-1024x576.jpg">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://images.squarespace-cdn.com/content/v1/54fc8146e4b02a22841f4df7/1497832653543-F9EH524VOZ7ELRAFXIEV/ke17ZwdGBToddI8pDm48kLRYo1iYLTuMb0aLuK0eAAFZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIAe7EifWA29OMyP628llsvFnISd6lGiCkuajMMxH8C5wKMshLAGzx4R3EDFOm1kBS/Doraemon-12-1024x576.jpg">
           </a>
           <div class="mt-4">
             <input type="radio" id="Doraemon" name="Cartoon" value="Doraemon" required>
@@ -194,7 +194,7 @@
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://1.bp.blogspot.com/-M7ADGcldJVs/Xk4ypb50gAI/AAAAAAAAAVo/NLOwk-O5WCU0r21HEhUetY6v0ijx1ueOQCLcBGAsYHQ/s1600/shin%2Bchan.jpg">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://1.bp.blogspot.com/-M7ADGcldJVs/Xk4ypb50gAI/AAAAAAAAAVo/NLOwk-O5WCU0r21HEhUetY6v0ijx1ueOQCLcBGAsYHQ/s1600/shin%2Bchan.jpg">
           </a>
           <div class="mt-4">
           <input type="radio" id="Shin" name="Cartoon" value="Shin">
@@ -202,7 +202,7 @@
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://1.bp.blogspot.com/-XaEG2arPNEE/XRYAywY26BI/AAAAAAAACkg/_ApOlweORtUX52ZGTiBpou2XGQYCkiLCQCLcBGAs/s1600/images.png">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://1.bp.blogspot.com/-XaEG2arPNEE/XRYAywY26BI/AAAAAAAACkg/_ApOlweORtUX52ZGTiBpou2XGQYCkiLCQCLcBGAs/s1600/images.png">
           </a>
           <div class="mt-4">
           <input type="radio" id="Kiteretsu" name="Cartoon" value="Kiteretsu">
@@ -211,7 +211,7 @@
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://rukminim1.flixcart.com/image/352/352/poster/e/g/p/paper-plane-design-high-quality-tom-and-jerry-funny-poster-18-x-original-imaen3fzcq3txygz.jpeg?q=70">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://rukminim1.flixcart.com/image/352/352/poster/e/g/p/paper-plane-design-high-quality-tom-and-jerry-funny-poster-18-x-original-imaen3fzcq3txygz.jpeg?q=70">
           </a>
           <div class="mt-4">
            <input type="radio" id="Tom" name="Cartoon" value="Tom">
@@ -219,11 +219,7 @@
           </div>
         </div>
 
-        <a href="/" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white" style=" position: relative; left: 50%; transform: translateX(-50%);">Proceed
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
+        <input type="submit" value="Proceed" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white" style=" position: relative; left: 50%; transform: translateX(-50%);">
       </div>
     </div>
   </form>
