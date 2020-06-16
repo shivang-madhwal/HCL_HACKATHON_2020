@@ -3,7 +3,7 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
-  width: 100%;
+  width: 60%;
 }
 
 *,
@@ -13,8 +13,9 @@ html {
 }
 
 #container {
-  height: 100%;
-  width: 100%;
+  display: inline-block;
+  height: 50%;
+  width: 50%;
 
 }
 
