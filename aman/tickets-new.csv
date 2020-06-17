@@ -1,33 +1,65 @@
 id,description
-1,101 - It's a red color ticket. The character is IRONMAN. Anthony Edward Stark is a fictional character portrayed by Robert Downey Jr. in the Marvel Cinematic Universe (MCU) film franchise.
-2,102 - It's a black color ticket. The character is IRONMAN. Anthony Edward Stark is a fictional character portrayed by Robert Downey Jr. in the Marvel Cinematic Universe (MCU) film franchise.
-3,103 - It's a yellow color ticket. The character is IRONMAN. Anthony Edward Stark is a fictional character portrayed by Robert Downey Jr. in the Marvel Cinematic Universe (MCU) film franchise.
-4,104 - It's a blue color ticket. The character is IRONMAN. Anthony Edward Stark is a fictional character portrayed by Robert Downey Jr. in the Marvel Cinematic Universe (MCU) film franchise.
-5,201 - It's a Brown color ticket. The character is a player in PUBG mobile game. It features a variety of skins that can be purchased ingame. It is made by TENCENT company.
-6,202 - It's a black color ticket. The character is a player in PUBG mobile game. It features a variety of skins that can be purchased ingame. It is made by TENCENT company.
-7,203 - It's a yellow color ticket. The character is a player in PUBG mobile game. It features a variety of skins that can be purchased ingame. It is made by TENCENT company.
-8,204 - It's a red color ticket. The character is a player in PUBG mobile game. It features a variety of skins that can be purchased ingame. It is made by TENCENT company.
-9,301 - It's a blue color ticket. The character is JOHN WICK. John Wick is the fictional title character and main protagonist of the John Wick film series.
-10,302 - It's a black color ticket. The character is JOHN WICK. John Wick is the fictional title character and main protagonist of the John Wick film series.
-11,303 - It's a yellow color ticket. The character is JOHN WICK. John Wick is the fictional title character and main protagonist of the John Wick film series.
-12,304 - It's a red color ticket. The character is JOHN WICK. John Wick is the fictional title character and main protagonist of the John Wick film series.
-13,401 - It's a yellow color ticket. The character is NARUTO. He is an anime character from the NARUTO series. It is one of the most watched animes.
-14,402 - It's a black color ticket. The character is NARUTO. He is an anime character from the NARUTO series. It is one of the most watched animes.
-15,403 - It's a blue color ticket. The character is NARUTO. He is an anime character from the NARUTO series. It is one of the most watched animes.
-16,404 - It's a red color ticket. The character is NARUTO. He is an anime character from the NARUTO series. It is one of the most watched animes.
-17,410 - It's a blue color ticket. The character is ITACHI. He is an anime character from NARUTO series. He is the most elegant and powerful character in the NARUTO series.
-18,411 - It's a black color ticket. The character is ITACHI. He is an anime character from NARUTO series. He is the most elegant and powerful character in the NARUTO series.
-19,412 - It's a yellow color ticket. The character is ITACHI. He is an anime character from NARUTO series. He is the most elegant and powerful character in the NARUTO series.
-20,413 - It's a red color ticket. The character is ITACHI. He is an anime character from NARUTO series. He is the most elegant and powerful character in the NARUTO series.
-21,420 - It's a blue color ticket. The character is GOKU. He is an anime character from DBZ series.He is one of the most powerful charcters in the DBZ series.
-22,421 - It's a black color ticket. The character is GOKU. He is an anime character from DBZ series.He is one of the most powerful charcters in the DBZ series.
-23,422 - It's a yellow color ticket. The character is GOKU. He is an anime character from DBZ series.He is one of the most powerful charcters in the DBZ series.
-24,423 - It's a red color ticket. The character is GOKU. He is an anime character from DBZ series.He is one of the most powerful charcters in the DBZ series.
-25,430 - It's a blue color ticket. The character is SAITAMA. He is an anime character from ONE PUNCH MAN series. He is the most powerful character in the whole series.
-26,431 - It's a black color ticket. The character is SAITAMA. He is an anime character from ONE PUNCH MAN series. He is the most powerful character in the whole series.
-27,432 - It's a yellow color ticket. The character is SAITAMA. He is an anime character from ONE PUNCH MAN series. He is the most powerful character in the whole series.
-28,433 - It's a red color ticket. The character is SAITAMA. He is an anime character from ONE PUNCH MAN series. He is the most powerful character in the whole series.
-29,440 - It's a blue color ticket. The character is GENOS. He is an anime character from ONE PUNCH MAN series. He is one of the most powerful characters in the whole series.
-30,441 - It's a black color ticket. The character is GENOS. He is an anime character from ONE PUNCH MAN series. He is one of the most powerful characters in the whole series.
-31,442 - It's a yellow color ticket. The character is GENOS. He is an anime character from ONE PUNCH MAN series. He is one of the most powerful characters in the whole series.
-32,443 - It's a red color ticket. The character is GENOS. He is an anime character from ONE PUNCH MAN series. He is one of the most powerful characters in the whole series.
+1,101 - {color1} The character is IRONMAN. It is played by Robert Downey Jr as Tony Stark. He is one of the most powerful character in MCU.
+2,102 - {color2} The character is IRONMAN. It is played by Robert Downey Jr as Tony Stark. He is one of the most powerful character in MCU.
+3,103 - {color3} The character is IRONMAN. It is played by Robert Downey Jr as Tony Stark. He is one of the most powerful character in MCU.
+4,104 - {color4} The character is IRONMAN. It is played by Robert Downey Jr as Tony Stark. He is one of the most powerful character in MCU.
+5,111 - {color1} The character is CAPTAIN AMERICA. It is played by Chris Evans as Steve Rogers. He is a supersolider.
+6,112 - {color2} The character is CAPTAIN AMERICA. It is played by Chris Evans as Steve Rogers. He is a supersolider.
+7,113 - {color3} The character is CAPTAIN AMERICA. It is played by Chris Evans as Steve Rogers. He is a supersolider.
+8,114 - {color4} The character is CAPTAIN AMERICA. It is played by Chris Evans as Steve Rogers. He is a supersolider.
+9,121 - {color1} The character is WONDER WOMAN. It is played by Gal Gadot as Diana Prince. She is a founding member of Justice League.
+10,122 - {color2} The character is WONDER WOMAN. It is played by Gal Gadot as Diana Prince. She is a founding member of Justice League.
+11,123 - {color3} The character is WONDER WOMAN. It is played by Gal Gadot as Diana Prince. She is a founding member of Justice League.
+12,124 - {color4} The character is WONDER WOMAN. It is played by Gal Gadot as Diana Prince. She is a founding member of Justice League.
+13,131 - {color1} The character is SUPERMAN. It is played by Henry Cavill as Clark Kent. He is one of the most powerful heroes in Justice League.
+14,132 - {color2} The character is SUPERMAN. It is played by Henry Cavill as Clark Kent. He is one of the most powerful heroes in Justice League.
+15,133 - {color3} The character is SUPERMAN. It is played by Henry Cavill as Clark Kent. He is one of the most powerful heroes in Justice League.
+16,134 - {color4} The character is SUPERMAN. It is played by Henry Cavill as Clark Kent. He is one of the most powerful heroes in Justice League.
+17,201 - {color1} The tv series is GAME OF THRONES. It is an American fantasy drama television series created by David Benioff and D. B. Weiss for HBO.
+18,202 - {color2} The tv series is GAME OF THRONES. It is an American fantasy drama television series created by David Benioff and D. B. Weiss for HBO.
+19,203 - {color3} The tv series is GAME OF THRONES. It is an American fantasy drama television series created by David Benioff and D. B. Weiss for HBO.
+20,204 - {color4} The tv series is GAME OF THRONES. It is an American fantasy drama television series created by David Benioff and D. B. Weiss for HBO.
+21,211 - {color1} The tv series is MONEY HEIST. It is a Spanish heist crime drama television series created by Álex Pina.
+22,212 - {color2} The tv series is MONEY HEIST. It is a Spanish heist crime drama television series created by Álex Pina.
+23,213 - {color3} The tv series is MONEY HEIST. It is a Spanish heist crime drama television series created by Álex Pina.
+24,214 - {color4} The tv series is MONEY HEIST. It is a Spanish heist crime drama television series created by Álex Pina.
+25,221 - {color1} The tv series is PEAKY BLINDERS. It is a British period crime drama television series created by Steven Knight.
+26,222 - {color2} The tv series is PEAKY BLINDERS. It is a British period crime drama television series created by Steven Knight.
+27,223 - {color3} The tv series is PEAKY BLINDERS. It is a British period crime drama television series created by Steven Knight.
+28,224 - {color4} The tv series is PEAKY BLINDERS. It is a British period crime drama television series created by Steven Knight.
+29,"231 - {color1} The tv series is 13 Reasons Why. It is an American teen drama web television series originally developed for Netflix as a limited series by Brian Yorkey, based on the 2007 novel Thirteen Reasons Why by Jay Asher."
+30,"232 - {color2} The tv series is 13 Reasons Why. It is an American teen drama web television series originally developed for Netflix as a limited series by Brian Yorkey, based on the 2007 novel Thirteen Reasons Why by Jay Asher."
+31,"233 - {color3} The tv series is 13 Reasons Why. It is an American teen drama web television series originally developed for Netflix as a limited series by Brian Yorkey, based on the 2007 novel Thirteen Reasons Why by Jay Asher."
+32,"234 - {color4} The tv series is 13 Reasons Why. It is an American teen drama web television series originally developed for Netflix as a limited series by Brian Yorkey, based on the 2007 novel Thirteen Reasons Why by Jay Asher."
+33,301 - {color1} The character is GOKU from DRAGON BALL Z anime. He is one of the most powerful characters in the series.
+34,302 - {color2} The character is GOKU from DRAGON BALL Z anime. He is one of the most powerful characters in the series.
+35,303 - {color3} The character is GOKU from DRAGON BALL Z anime. He is one of the most powerful characters in the series.
+36,304 - {color4} The character is GOKU from DRAGON BALL Z anime. He is one of the most powerful characters in the series.
+37,311 - {color1} The character is NARUTO from NARUTO anime. He is one of the most powerful ninjas in the series.
+38,312 - {color2} The character is NARUTO from NARUTO anime. He is one of the most powerful ninjas in the series.
+39,313 - {color3} The character is NARUTO from NARUTO anime. He is one of the most powerful ninjas in the series.
+40,314 - {color4} The character is NARUTO from NARUTO anime. He is one of the most powerful ninjas in the series.
+41,321 - {color1} The character is {character} from POKEMON anime. 
+42,322 - {color2} The character is {character} from POKEMON anime. 
+43,323 - {color3} The character is {character} from POKEMON anime. 
+44,324 - {color4} The character is {character} from POKEMON anime. 
+45,331 - {color1} The character is {character} from DEATH NOTE anime.
+46,332 - {color2} The character is {character} from DEATH NOTE anime.
+47,333 - {color3} The character is {character} from DEATH NOTE anime.
+48,334 - {color4} The character is {character} from DEATH NOTE anime.
+49,"401 - {color1} The game is PUBG. It is an online multiplayer battle royale game developed and published by PUBG Corporation, a subsidiary of South Korean video game company Bluehole."
+50,"402 - {color2} The game is PUBG. It is an online multiplayer battle royale game developed and published by PUBG Corporation, a subsidiary of South Korean video game company Bluehole."
+51,"403 - {color3} The game is PUBG. It is an online multiplayer battle royale game developed and published by PUBG Corporation, a subsidiary of South Korean video game company Bluehole."
+52,"404 - {color4} The game is PUBG. It is an online multiplayer battle royale game developed and published by PUBG Corporation, a subsidiary of South Korean video game company Bluehole."
+53,411 - {color1} The game is GOD OF WAR. It is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment (SIE).
+54,412 - {color2} The game is GOD OF WAR. It is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment (SIE).
+55,413 - {color3} The game is GOD OF WAR. It is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment (SIE).
+56,414 - {color4} The game is GOD OF WAR. It is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment (SIE).
+57,421 - {color1} The game is GTA-5. It is a 2013 action-adventure game developed by Rockstar North and published by Rockstar Games.
+58,422 - {color2} The game is GTA-5. It is a 2013 action-adventure game developed by Rockstar North and published by Rockstar Games.
+59,423 - {color3} The game is GTA-5. It is a 2013 action-adventure game developed by Rockstar North and published by Rockstar Games.
+60,424 - {color4} The game is GTA-5. It is a 2013 action-adventure game developed by Rockstar North and published by Rockstar Games.
+61,"431 - {color1} The game is CYBERPUNK. It is a storydriven, open world RPG of the dark future from CD PROJEKT RED, creators of The Witcher series of games."
+62,"432 - {color2} The game is CYBERPUNK. It is a storydriven, open world RPG of the dark future from CD PROJEKT RED, creators of The Witcher series of games."
+63,"433 - {color3} The game is CYBERPUNK. It is a storydriven, open world RPG of the dark future from CD PROJEKT RED, creators of The Witcher series of games."
+64,"434 - {color4} The game is CYBERPUNK. It is a storydriven, open world RPG of the dark future from CD PROJEKT RED, creators of The Witcher series of games."
