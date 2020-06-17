@@ -139,14 +139,14 @@ display: block;
           </div>
 
           <div style="border-color: white; border-width: 3px; width: 1000px; position: relative; height: 500px;">
-
             <h1 style="margin-left: 5px;">Collect two of this category and win a free entry into Crew Lottery with prize of $100</h1>
-            <img src="../static/uploads/101.png" style="width: 30%; height: auto; padding: 10px ; display: inline-block; margin-left: 20px; margin-top: 50px;">
-             <img src="../static/uploads/101.png" style="width: 30%; height: auto; padding: 10px ; display: inline-block;  margin-top: 50px;">
-              <img src="../static/uploads/101.png" style="width: 30%; height: auto; padding: 10px ; display: inline-block;  margin-top: 50px;">
 
-
-          </div>
+          {% for i in crewlot %}
+            <a href="/productDescription?productId={{i[0]}}&entry={{price}}">
+              <img alt="{{i[1]}}" src={{ url_for('static', filename='uploads/' + i[2]) }} style="width: 30%; height: auto; padding: 10px ; display: inline-block; margin-left: 20px; margin-top: 50px;"/>
+            </a>
+          {% endfor %}
+        </div>
 
 
         </div>

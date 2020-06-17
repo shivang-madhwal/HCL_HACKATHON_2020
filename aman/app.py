@@ -88,22 +88,13 @@ def parse(data):
         ans.append(curr)
     return ans
 
-def bucket(preferences):
-    preferences = preferences.split(',')
-    suggest = []
-    for tic in preferences:
-        with sqlite3.connect('database.db') as conn:
-            cur = conn.cursor()
-            cur.execute('SELECT productId, name, image FROM products WHERE name = ?', (tic, ))
-            k = cur.fetchall()
-            suggest.append(k)
-    conn.close()
+def othertic(itemData):
     ans = []
-    ans.append(random.choice(suggest[0]))
-    ans.append(random.choice(suggest[1]))
-    ans.append(random.choice(suggest[2]))
-    ans.append(random.choice(suggest[3]))
+    for i in range(0,len(itemData),4):
+        r = random.randint(0,3)
+        ans.append(itemData[i+r])
     return ans
+
 
 # Home page
 @app.route("/")
@@ -119,11 +110,12 @@ def catalog():
     with sqlite3.connect('database.db') as conn:
         cur = conn.cursor()
         cur.execute('SELECT productId, name, description, image FROM products')
-        itemData = cur.fetchall() 
+        itemData = cur.fetchall()
+    itemData = othertic(itemData)  
     itemData = parse(itemData) 
     conn.close()
     if 'email' not in session:
-        suggest = [(5, 'Captain America', '111.png'), (18, 'Game of Thrones', '202.png'), (45, 'Death Note', '331.png'), (55, 'God Of War', '413.png')]
+        suggest = [(1, 'Ironman', '101.png'), (18, 'Game of Thrones', '202.png'), (37, 'Naruto', '311.png'), (49, 'PUBG', '401.png')]
     else:
         with sqlite3.connect('database.db') as conn:
             cur = conn.cursor()
@@ -132,6 +124,28 @@ def catalog():
             suggest = bucket(pref)
         conn.close()
     return render_template('catalog.html',price = entry,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,itemData = itemData,suggest = suggest)
+
+def crewtic(tic,cate):
+    ans = []
+    for i in cate:
+        if i != tic:
+            ans.append(i)
+    return ans
+
+def crew(tic):
+    superHeroes = ['Ironman', 'Captain America','Wonder Woman','Superman']
+    tvseries = ['Game of Thrones', 'Money Heist', 'Peaky Blinders', '13 reasons Why']
+    anime = ['Goku', 'Naruto', 'Pokemon', 'Death Note']
+    games = ['PUBG', 'God Of War', 'GTA-V', 'CyberPunk']
+
+    if tic in superHeroes:
+        return crewtic(tic,superHeroes)
+    elif tic in tvseries:
+        return crewtic(tic,tvseries)
+    elif tic in anime:
+        return crewtic(tic,anime)
+    elif tic in games:
+        return crewtic(tic,games)
 
 # Ticket Page
 @app.route("/productDescription")
@@ -154,7 +168,21 @@ def productDescription():
             k = cur.fetchall()
             suggest.append(k)
     conn.close()
-    return render_template("ticket.html", data=productData,price=price,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,suggest = suggest)
+
+    crewlot = crew(productData[1])
+    crewsugg = []
+    for tic in crewlot:
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute('SELECT productId, name, image FROM products WHERE name = ?', (tic, ))
+            k = cur.fetchall()
+            crewsugg.append(k)
+    conn.close()
+    ans = []
+    ans.append(random.choice(crewsugg[0]))
+    ans.append(random.choice(crewsugg[1]))
+    ans.append(random.choice(crewsugg[2]))
+    return render_template("ticket.html", data=productData,price=price,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,suggest = suggest,crewlot = ans)
 
 
 @app.route("/addToCart")
@@ -306,7 +334,22 @@ def choice():
         conn.close()
         return  redirect(url_for('index'))
     
-    
+def bucket(preferences):
+    preferences = preferences.split(',')
+    suggest = []
+    for tic in preferences:
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute('SELECT productId, name, image FROM products WHERE name = ?', (tic, ))
+            k = cur.fetchall()
+            suggest.append(k)
+    conn.close()
+    ans = []
+    ans.append(random.choice(suggest[0]))
+    ans.append(random.choice(suggest[1]))
+    ans.append(random.choice(suggest[2]))
+    ans.append(random.choice(suggest[3]))
+    return ans 
 
 # registration
 @app.route("/registerationForm")
