@@ -255,18 +255,6 @@ def login():
             error = 'Invalid Email / Password'
             return render_template('login.html', error=error)
 
-# @app.route("/firstlogin", methods = ['POST', 'GET'])
-# def firstlogin():
-#     if request.method == 'POST':
-#         email = request.form['email']
-#         password = request.form['password']
-#         if is_valid(email, password):
-#             session['email'] = email
-#             return redirect(url_for('choice'))
-#         else:
-#             error = 'Invalid Email / Password'
-#             return render_template('login.html', error=error)
-
 @app.route("/choice",methods = ['POST','GET'])
 def choice():
     if request.method == 'GET':
