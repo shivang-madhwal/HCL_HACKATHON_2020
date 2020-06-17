@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request, session, url_for
 import sqlite3, hashlib, os
 from werkzeug.utils import secure_filename
-from random import randint
+import random
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
@@ -37,7 +37,7 @@ def recommend(item_id, num):
 # generate tickets number
 def ticketNum(date):
     year, month, day = date[2:4], date[5:7], date[8:10]
-    pre = randint(1000,9999)
+    pre = random.randint(1000,9999)
     mod = pre%3
     if mod == 0:
         number = str(pre)+month+day
@@ -88,6 +88,23 @@ def parse(data):
         ans.append(curr)
     return ans
 
+def bucket(preferences):
+    preferences = preferences.split(',')
+    suggest = []
+    for tic in preferences:
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute('SELECT productId, name, image FROM products WHERE name = ?', (tic, ))
+            k = cur.fetchall()
+            suggest.append(k)
+    conn.close()
+    ans = []
+    ans.append(random.choice(suggest[0]))
+    ans.append(random.choice(suggest[1]))
+    ans.append(random.choice(suggest[2]))
+    ans.append(random.choice(suggest[3]))
+    return ans
+
 # Home page
 @app.route("/")
 def index():
@@ -105,7 +122,16 @@ def catalog():
         itemData = cur.fetchall() 
     itemData = parse(itemData) 
     conn.close()
-    return render_template('catalog.html',price = entry,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,itemData = itemData)
+    if 'email' not in session:
+        suggest = [(5, 'Captain America', '111.png'), (18, 'Game of Thrones', '202.png'), (45, 'Death Note', '331.png'), (55, 'God Of War', '413.png')]
+    else:
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute("SELECT preferences FROM users WHERE email = ?", (session['email'], ))
+            pref = cur.fetchone()[0]
+            suggest = bucket(pref)
+        conn.close()
+    return render_template('catalog.html',price = entry,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,itemData = itemData,suggest = suggest)
 
 # Ticket Page
 @app.route("/productDescription")
@@ -118,18 +144,18 @@ def productDescription():
         cur.execute('SELECT productId, name, description, image FROM products WHERE productId = ?', (productId, ))
         productData = cur.fetchone()
     conn.close()
-    rec = recommend(item_id = int(productId),num = 5)
-    return render_template("ticket.html", data=productData,price=price,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,suggest = rec)
-# use this commented section before line 122 for ticket suggestions
-# we are getting something like [[(1, 'PUBG', '101.png')], [], [], [], []] so we will need 3D array
-"""     suggest = []
+    rec = recommend(item_id = int(productId),num = 6)
+
+    suggest = []
     for tic in rec:
         with sqlite3.connect('database.db') as conn:
             cur = conn.cursor()
             cur.execute('SELECT productId, name, image FROM products WHERE image = ?', (tic, ))
             k = cur.fetchall()
             suggest.append(k)
-    conn.close() """
+    conn.close()
+    return render_template("ticket.html", data=productData,price=price,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,suggest = suggest)
+
 
 @app.route("/addToCart")
 def addToCart():
@@ -230,10 +256,15 @@ def removeFromCart():
     conn.close()
     return redirect(url_for('cart'))
 
-@app.route("/custom")
+@app.route("/custom", methods = ['POST', 'GET'])
 def customTicket():
     loggedIn, firstName, noOfItems = getLoginDetails()
-    return render_template('customticket.html',loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems)
+    if request.method == "GET":
+        return render_template('customchoice.html',loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems)
+    if request.method == "POST":
+        character = request.form['heroes']
+        #need character image name here
+        return render_template('customticket.html',loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems,character=character)
 
 # Login
 @app.route("/loginForm")

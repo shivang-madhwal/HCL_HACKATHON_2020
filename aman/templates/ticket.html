@@ -156,7 +156,18 @@ display: block;
         </div>
 
 
-
+        {% for tic in suggest %}
+        {% for i in tic %}
+        <div class="lg:w-1/6 md:w-1/2 p-4 w-full" style="width: 17%; height: auto; display: inline-block;">
+          <a class="rounded overflow-hidden">
+            <a href="/productDescription?productId={{i[0]}}&entry={{price}}">
+              <img alt="{{i[2]}} " src={{ url_for('static', filename='uploads/' + i[2]) }} />
+            </a>
+          </a>
+            <h2 " class="text-white title-font text-lg font-medium" style="text-align: center; margin-top: 5px;">{{i[1]}}</h2>
+        </div>
+        {% endfor %}
+        {% endfor %}
 
         
         </div>

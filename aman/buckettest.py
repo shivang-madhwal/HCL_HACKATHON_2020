@@ -1,10 +1,28 @@
-superHeroes = ['ironman', 'batman','captain_america','spiderman']
-tvseries = ['breaking_bad', 'games_of_throne', 'mr_robot', 'friends', 'bing_bang_theory']
-anime = ['naruto', 'attack_on_titan', 'death_note', 'boruto', 'erased']
-games = ['pubg', 'gta5', 'dota3', 'fortnite', 'world_war_z']
+import sqlite3
+from random import choice
+superHeroes = ['Ironman', 'Captain Amperica','Wonder Woman','Superman']
+tvseries = ['Game of Thrones', 'Money Heist', 'Peaky Blinders', '13 reasons Why']
+anime = ['Goku', 'Naruto', 'Pokemon', 'Death Note']
+games = ['PUBG', 'God Of War', 'GTA-V', 'CyberPunk']
 
 def bucket(preferences):
     preferences = preferences.split(',')
-    # use this list and databse and return a list of suggestions
+    suggest = []
+    for tic in preferences:
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute('SELECT productId, name, image FROM products WHERE name = ?', (tic, ))
+            k = cur.fetchall()
+            suggest.append(k)
+    conn.close()
+    ans = []
+    ans.append(choice(suggest[0]))
+    ans.append(choice(suggest[1]))
+    ans.append(choice(suggest[2]))
+    ans.append(choice(suggest[3]))
+    return ans
 
-preferences = 'ironman,mr_robot,attack_on_titan,gta5'
+
+preferences = 'Captain America,Game of Thrones,Death Note,God Of War'
+ans = bucket(preferences)
+print(ans)

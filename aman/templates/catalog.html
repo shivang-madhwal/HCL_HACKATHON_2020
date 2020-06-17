@@ -115,6 +115,35 @@ display: block;
   </header>
 
 
+  <section class="text-gray-500 bg-gray-900 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col">
+        <div class="h-1 bg-gray-800 rounded overflow-hidden">
+          <div class="w-24 h-full bg-indigo-500"></div>
+        </div>
+        <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
+          <h1 class="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0">Tickets You May Like</h1>
+        </div>
+      </div>
+    
+      <div class="flex flex-wrap -m-4">
+        
+        {% for i in suggest %}
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="width: 25%; height: auto;">
+          <a class="rounded overflow-hidden">
+            <a alt = "{{i[2]}}" href="/productDescription?productId={{i[0]}}&entry={{price}}">
+                <img  alt = "{{i[2]}}" src={{ url_for('static', filename='uploads/' + i[2]) }} />
+            </a>
+          </a>
+          <div class="mt-4">
+            <h2 " class="text-white title-font text-lg font-medium" style="text-align: center;">{{i[1]}}</h2>
+            <p class="mt-1" style="text-align: center;">${{price}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 
       <section class="text-gray-500 bg-gray-900 body-font">
         <div class="container px-5 py-24 mx-auto">
@@ -123,10 +152,10 @@ display: block;
               <div class="w-24 h-full bg-indigo-500"></div>
             </div>
             <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
-              <h1 class="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0">Tickets You May Like</h1>
+              <h1 class="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0">Other Tickets</h1>
             </div>
           </div>
-          
+        
           <div class="flex flex-wrap -m-4">
             
             {% for data in itemData %}
@@ -134,7 +163,7 @@ display: block;
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="width: 25%; height: auto;">
               <a class="rounded overflow-hidden">
                 <a href="/productDescription?productId={{row[0]}}&entry={{price}}">
-                    <img  src={{ url_for('static', filename='uploads/' + row[3]) }} />
+                    <img  alt = "{{row[3]}}" src={{ url_for('static', filename='uploads/' + row[3]) }} />
                 </a>
               </a>
               <div class="mt-4">
