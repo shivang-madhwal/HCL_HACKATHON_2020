@@ -261,9 +261,9 @@ def choice():
         return render_template("choice.html")
     if request.method == 'POST':
         pre1 = request.form['heroes']
-        pre2 = request.form['TV Series']
+        pre2 = request.form['TV-Series']
         pre3 = request.form['Anime']
-        pre4 = request.form['Cartoon']
+        pre4 = request.form['Game']
         pre = pre1+','+pre2+','+pre3+','+pre4
         email = session['email']
         with sqlite3.connect('database.db') as conn:
