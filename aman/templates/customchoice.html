@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scaled = 1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/logo.css">
+	<title>Custom Choice</title>
+
+	    <style >.dropbtn {
+        background-color: #2d3748;
+        color: white;
+        padding: 12px;
+        vertical-align: middle;
+        border-radius: 5px;
+        width: 150px;
+        height: 40px;
+        padding: 2px;
+        color: #a0aec0;
+
+  }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #4a5568; color: #fff}</style>
+</head>
+<body class="bg-gray-900">
+
+    <header class="text-gray-500 bg-gray-900 body-font" >
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+            <svg xmlns="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl" style="position: relative; left: 40px; ">Welcome</span>
+          </a>
+          <div class="flex title-font font-medium items-center text-white mb-4 md:mb-0" style=" position: absolute; left: 37%; transform: translateX(-50%);">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 600 300" class=" text-gray-500 bg-gray-900 body-font" id="yaha">
+
+          <!-- Symbol -->
+          <symbol id="s-text">
+            <text text-anchor="middle"
+                    x="50%" y="50%" dy=".45em">
+                LOTTERY
+             </text>
+          </symbol>
+        
+          <!-- Duplicate symbols -->
+          <use xlink:href="#s-text" class="text"
+                    ></use>
+          <use xlink:href="#s-text" class="text"
+                    ></use>
+          <use xlink:href="#s-text" class="text"
+                    ></use>
+          <use xlink:href="#s-text" class="text"
+                    ></use>
+          <use xlink:href="#s-text" class="text"
+                    ></use>
+        
+        </svg>
+      </div>
+          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a href="/" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white"  style="margin-right: 5px; height: 40px;" >Home</a> 
+            <a href="/cart" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white" style="margin-right: 5px; height: 40px;">Cart ({{noOfItems}})
+               <svg  fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="relative w-4 h-4 ml-1" viewBox="0 0 24 24" >
+               <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+            
+           
+            <div class="dropdown">
+               {% if not loggedIn %}
+                <button class="dropbtn">Sign In</button>
+                <div class="dropdown-content">
+                    <a href="/loginForm"> Login</a><hr>
+                    <a href="/registerationForm"> Sign Up</a> 
+               {% else %}
+              <button class="dropbtn" >Hello, {{firstName}}</button>
+              <div class="dropdown-content">
+                <a href="/myTickets">My Tickets</a><hr>
+                <a href="/logout">Sign Out
+              <path d="M5 12h14M12 5l7 7-7 7"></path></a>
+              </div>
+            </div>
+            
+            {% endif %}
+          </nav>
+
+        </div>
+      </header>
+      
+
+  <section class="text-gray-500 bg-gray-900 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col">
+        <div class="h-1 bg-gray-800 rounded overflow-hidden">
+          <div class="w-24 h-full bg-indigo-500"></div>
+        </div>
+      </div>
+
+  <section class="text-gray-500 bg-gray-900 body-font" style="position: relative; top: -85px;">
+            <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
+          <h1 class="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0" >Your fav Superhero?</h1>
+        </div>
+    <form action="{{ url_for('choice') }}" method="POST">
+    <div class="container px-5 py-12 mx-auto">
+      <div class="flex flex-wrap -m-4">
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRrlALsspZM0QwSkXRFeYO5kYw3En2Y7GzIH1YiHob5wGqY6e38&usqp=CAU">
+          </a>
+          <div class="mt-4">
+            <input type="radio" id="Iron Man" name="heroes" value="Iron Man" required>
+            <label for="Iron Man" style="font-size: large;">Iron Man</label><br>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://wallpaperaccess.com/full/1307358.jpg">
+          </a>
+          <div class="mt-4">
+          <input type="radio" id="Cap" name="heroes" value="Cap">
+          <label for="Cap" style="font-size: large;">Captain America</label><br>          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQime3yaiWq1qN4KHZ5Y8XVEbLNaB5PGuHfWXFYFHOQ1oHT62fp&usqp=CAU">
+          </a>
+          <div class="mt-4">
+          <input type="radio" id="Batman" name="heroes" value="Batman">
+          <label for="Batman" style="font-size: large;">Batman</label><br>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img alt="pic" class="object-cover object-center w-full h-full block" src="https://images4.alphacoders.com/209/209416.jpg">
+          </a>
+          <div class="mt-4">
+           <input type="radio" id="Superman" name="heroes" value="Superman">
+          <label for="Superman" style="font-size: large;">Superman</label><br>
+          </div>
+        </div>
+        <input type="submit" value="Proceed" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white" style=" position: relative; left: 50%; transform: translateX(-50%);">
+      </div>
+    </div>
+  </form>
+  </section>
+
+</body>
+</html>
