@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, session, jsonify , url_for
+from flask import Flask, render_template, redirect, request, session, url_for
 import sqlite3, hashlib, os
 from werkzeug.utils import secure_filename
 from random import randint
@@ -316,7 +316,8 @@ def register():
                 con.rollback()
                 msg = "Error occured"
         con.close()
-        return render_template("firstlogin.html", error=msg)
+        session['email'] = email
+        return render_template("choice.html", error=msg)
 
 @app.route("/terms")
 def terms():
