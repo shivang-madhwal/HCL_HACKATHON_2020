@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request, session, url_for
 import sqlite3, hashlib, os
 from werkzeug.utils import secure_filename
-from random import randint
+import random
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
@@ -37,7 +37,7 @@ def recommend(item_id, num):
 # generate tickets number
 def ticketNum(date):
     year, month, day = date[2:4], date[5:7], date[8:10]
-    pre = randint(1000,9999)
+    pre = random.randint(1000,9999)
     mod = pre%3
     if mod == 0:
         number = str(pre)+month+day
@@ -88,6 +88,14 @@ def parse(data):
         ans.append(curr)
     return ans
 
+def othertic(itemData):
+    ans = []
+    for i in range(0,len(itemData),4):
+        r = random.randint(0,3)
+        ans.append(itemData[i+r])
+    return ans
+
+
 # Home page
 @app.route("/")
 def index():
@@ -102,10 +110,42 @@ def catalog():
     with sqlite3.connect('database.db') as conn:
         cur = conn.cursor()
         cur.execute('SELECT productId, name, description, image FROM products')
-        itemData = cur.fetchall() 
+        itemData = cur.fetchall()
+    itemData = othertic(itemData)  
     itemData = parse(itemData) 
     conn.close()
-    return render_template('catalog.html',price = entry,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,itemData = itemData)
+    if 'email' not in session:
+        suggest = [(1, 'Ironman', '101.png'), (18, 'Game of Thrones', '202.png'), (37, 'Naruto', '311.png'), (49, 'PUBG', '401.png')]
+    else:
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute("SELECT preferences FROM users WHERE email = ?", (session['email'], ))
+            pref = cur.fetchone()[0]
+            suggest = bucket(pref)
+        conn.close()
+    return render_template('catalog.html',price = entry,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,itemData = itemData,suggest = suggest)
+
+def crewtic(tic,cate):
+    ans = []
+    for i in cate:
+        if i != tic:
+            ans.append(i)
+    return ans
+
+def crew(tic):
+    superHeroes = ['Ironman', 'Captain America','Wonder Woman','Superman']
+    tvseries = ['Game of Thrones', 'Money Heist', 'Peaky Blinders', '13 reasons Why']
+    anime = ['Goku', 'Naruto', 'Pokemon', 'Death Note']
+    games = ['PUBG', 'God Of War', 'GTA-V', 'CyberPunk']
+
+    if tic in superHeroes:
+        return crewtic(tic,superHeroes)
+    elif tic in tvseries:
+        return crewtic(tic,tvseries)
+    elif tic in anime:
+        return crewtic(tic,anime)
+    elif tic in games:
+        return crewtic(tic,games)
 
 # Ticket Page
 @app.route("/productDescription")
@@ -118,18 +158,32 @@ def productDescription():
         cur.execute('SELECT productId, name, description, image FROM products WHERE productId = ?', (productId, ))
         productData = cur.fetchone()
     conn.close()
-    rec = recommend(item_id = int(productId),num = 5)
-    return render_template("ticket.html", data=productData,price=price,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,suggest = rec)
-# use this commented section before line 122 for ticket suggestions
-# we are getting something like [[(1, 'PUBG', '101.png')], [], [], [], []] so we will need 3D array
-"""     suggest = []
+    rec = recommend(item_id = int(productId),num = 6)
+
+    suggest = []
     for tic in rec:
         with sqlite3.connect('database.db') as conn:
             cur = conn.cursor()
             cur.execute('SELECT productId, name, image FROM products WHERE image = ?', (tic, ))
             k = cur.fetchall()
             suggest.append(k)
-    conn.close() """
+    conn.close()
+
+    crewlot = crew(productData[1])
+    crewsugg = []
+    for tic in crewlot:
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute('SELECT productId, name, image FROM products WHERE name = ?', (tic, ))
+            k = cur.fetchall()
+            crewsugg.append(k)
+    conn.close()
+    ans = []
+    ans.append(random.choice(crewsugg[0]))
+    ans.append(random.choice(crewsugg[1]))
+    ans.append(random.choice(crewsugg[2]))
+    return render_template("ticket.html", data=productData,price=price,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,suggest = suggest,crewlot = ans)
+
 
 @app.route("/addToCart")
 def addToCart():
@@ -230,10 +284,15 @@ def removeFromCart():
     conn.close()
     return redirect(url_for('cart'))
 
-@app.route("/custom")
+@app.route("/custom", methods = ['POST', 'GET'])
 def customTicket():
     loggedIn, firstName, noOfItems = getLoginDetails()
-    return render_template('customticket.html',loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems)
+    if request.method == "GET":
+        return render_template('customchoice.html',loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems)
+    if request.method == "POST":
+        character = request.form['heroes']
+        #need character image name here
+        return render_template('customticket.html',loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems,character=character)
 
 # Login
 @app.route("/loginForm")
@@ -261,9 +320,9 @@ def choice():
         return render_template("choice.html")
     if request.method == 'POST':
         pre1 = request.form['heroes']
-        pre2 = request.form['TV Series']
+        pre2 = request.form['TV-Series']
         pre3 = request.form['Anime']
-        pre4 = request.form['Cartoon']
+        pre4 = request.form['Game']
         pre = pre1+','+pre2+','+pre3+','+pre4
         email = session['email']
         with sqlite3.connect('database.db') as conn:
@@ -275,7 +334,22 @@ def choice():
         conn.close()
         return  redirect(url_for('index'))
     
-    
+def bucket(preferences):
+    preferences = preferences.split(',')
+    suggest = []
+    for tic in preferences:
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute('SELECT productId, name, image FROM products WHERE name = ?', (tic, ))
+            k = cur.fetchall()
+            suggest.append(k)
+    conn.close()
+    ans = []
+    ans.append(random.choice(suggest[0]))
+    ans.append(random.choice(suggest[1]))
+    ans.append(random.choice(suggest[2]))
+    ans.append(random.choice(suggest[3]))
+    return ans 
 
 # registration
 @app.route("/registerationForm")
