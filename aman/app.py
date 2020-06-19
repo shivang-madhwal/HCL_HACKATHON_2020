@@ -110,7 +110,6 @@ def index():
 def catalog():
     if 'email' not in session:
         return redirect(url_for('loginForm'))
-        # suggest = [(1, 'Ironman', '101.png'), (18, 'Game of Thrones', '202.png'), (37, 'Naruto', '311.png'), (49, 'PUBG', '401.png')]
     else:
         loggedIn, firstName, noOfItems = getLoginDetails()
         entry = float(request.args.get('entry'))
@@ -127,6 +126,7 @@ def catalog():
             pref = cur.fetchone()[0]
             suggest = bucket(pref)
         conn.close()
+        random.shuffle(suggest)
         return render_template('catalog.html',price = entry,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,itemData = itemData,suggest = suggest)
 
 def crewtic(tic,cate):
@@ -321,6 +321,8 @@ def login():
 @app.route("/choice",methods = ['POST','GET'])
 def choice():
     if request.method == 'GET':
+        if 'email' not in session:
+            return redirect(url_for('loginForm'))
         return render_template("choice.html")
     if request.method == 'POST':
         pre1 = request.form['heroes']
