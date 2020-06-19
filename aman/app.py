@@ -295,8 +295,9 @@ def customTicket():
         return render_template('customchoice.html',loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems)
     if request.method == "POST":
         character = request.form['heroes']
+        quote = request.form['quote']
         #need character image name here
-        return render_template('customticket.html',loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems,character=character)
+        return render_template('customticket.html',loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems,character=character,quote=quote)
 
 # Login
 @app.route("/loginForm")

@@ -53,7 +53,7 @@
     <header class="text-gray-500 bg-gray-900 body-font" >
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-            <svg xmlns="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+            <svg xmlns="" fill="none" stroke="currentColor" stroke-lineNaruto="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
             <span class="ml-3 text-xl" style="position: relative; left: 40px; ">Welcome</span>
@@ -86,7 +86,7 @@
           <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <a href="/" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white"  style="margin-right: 5px; height: 40px;" >Home</a> 
             <a href="/cart" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white" style="margin-right: 5px; height: 40px;">Cart ({{noOfItems}})
-               <svg  fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="relative w-4 h-4 ml-1" viewBox="0 0 24 24" >
+               <svg  fill="none" stroke="currentColor" stroke-lineNaruto="round" stroke-linejoin="round" stroke-width="2" class="relative w-4 h-4 ml-1" viewBox="0 0 24 24" >
                <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
             </a>
@@ -134,7 +134,7 @@
             <img alt="pic" class="object-cover object-center w-full h-full block" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRrlALsspZM0QwSkXRFeYO5kYw3En2Y7GzIH1YiHob5wGqY6e38&usqp=CAU">
           </a>
           <div class="mt-4">
-            <input type="radio" id="Iron Man" name="heroes" value="Iron Man" required>
+            <input type="radio" id="Iron Man" name="heroes" value="im.png" required>
             <label for="Iron Man" style="font-size: large;">Iron Man</label><br>
           </div>
         </div>
@@ -143,16 +143,16 @@
             <img alt="pic" class="object-cover object-center w-full h-full block" src="https://wallpaperaccess.com/full/1307358.jpg">
           </a>
           <div class="mt-4">
-          <input type="radio" id="Cap" name="heroes" value="Cap">
-          <label for="Cap" style="font-size: large;">Captain America</label><br>          </div>
+          <input type="radio" id="Naruto" name="heroes" value="na.png">
+          <label for="Naruto" style="font-size: large;">Naruto</label><br>          </div>
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
           <a class="block relative h-48 rounded overflow-hidden">
             <img alt="pic" class="object-cover object-center w-full h-full block" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQime3yaiWq1qN4KHZ5Y8XVEbLNaB5PGuHfWXFYFHOQ1oHT62fp&usqp=CAU">
           </a>
           <div class="mt-4">
-          <input type="radio" id="Batman" name="heroes" value="Batman">
-          <label for="Batman" style="font-size: large;">Batman</label><br>
+          <input type="radio" id="PUBG" name="heroes" value="pg.png">
+          <label for="PUBG" style="font-size: large;">PUBG</label><br>
           </div>
         </div>
         <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
@@ -160,10 +160,11 @@
             <img alt="pic" class="object-cover object-center w-full h-full block" src="https://images4.alphacoders.com/209/209416.jpg">
           </a>
           <div class="mt-4">
-           <input type="radio" id="Superman" name="heroes" value="Superman">
-          <label for="Superman" style="font-size: large;">Superman</label><br>
+           <input type="radio" id="WonderWoman" name="heroes" value="ww.png">
+          <label for="WonderWoman" style="font-size: large;">Wonder Woman</label><br>
           </div>
         </div>
+        <textarea name="quote" class="bg-gray-700 text-white rounded border border-gray-700 focus:outline-none h-32 focus:border-indigo-500 text-base px-4 py-2 mb-4 resize-none" placeholder="Your Quote"></textarea>
         <input type="submit" value="Proceed" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 hover:text-white" style=" position: relative; left: 50%; transform: translateX(-50%);">
       </div>
     </div>
