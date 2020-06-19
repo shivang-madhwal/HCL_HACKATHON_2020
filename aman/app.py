@@ -100,30 +100,34 @@ def othertic(itemData):
 @app.route("/")
 def index():
     loggedIn, firstName, noOfItems = getLoginDetails()
-    return render_template('index.html',firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems)
+    if 'email' not in session:
+        return redirect(url_for('loginForm'))
+    else:
+        return render_template('index.html',firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems)
 
 # Ticket List
 @app.route("/catalog", methods = ['GET','POST'])
 def catalog():
-    loggedIn, firstName, noOfItems = getLoginDetails()
-    entry = float(request.args.get('entry'))
-    with sqlite3.connect('database.db') as conn:
-        cur = conn.cursor()
-        cur.execute('SELECT productId, name, description, image FROM products')
-        itemData = cur.fetchall()
-    itemData = othertic(itemData)  
-    itemData = parse(itemData) 
-    conn.close()
     if 'email' not in session:
-        suggest = [(1, 'Ironman', '101.png'), (18, 'Game of Thrones', '202.png'), (37, 'Naruto', '311.png'), (49, 'PUBG', '401.png')]
+        return redirect(url_for('loginForm'))
     else:
+        loggedIn, firstName, noOfItems = getLoginDetails()
+        entry = float(request.args.get('entry'))
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute('SELECT productId, name, description, image FROM products')
+            itemData = cur.fetchall()
+        itemData = othertic(itemData)  
+        itemData = parse(itemData) 
+        conn.close()
         with sqlite3.connect('database.db') as conn:
             cur = conn.cursor()
             cur.execute("SELECT preferences FROM users WHERE email = ?", (session['email'], ))
             pref = cur.fetchone()[0]
             suggest = bucket(pref)
         conn.close()
-    return render_template('catalog.html',price = entry,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,itemData = itemData,suggest = suggest)
+        random.shuffle(suggest)
+        return render_template('catalog.html',price = entry,firstName = firstName,loggedIn = loggedIn , noOfItems = noOfItems,itemData = itemData,suggest = suggest)
 
 def crewtic(tic,cate):
     ans = []
@@ -317,6 +321,8 @@ def login():
 @app.route("/choice",methods = ['POST','GET'])
 def choice():
     if request.method == 'GET':
+        if 'email' not in session:
+            return redirect(url_for('loginForm'))
         return render_template("choice.html")
     if request.method == 'POST':
         pre1 = request.form['heroes']
